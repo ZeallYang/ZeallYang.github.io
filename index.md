@@ -10,8 +10,8 @@
 
 <div align="center">
   
-| [Google Scholar](https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN) | [ResearchGate] | [团队] | [学院主页] |
-|------------------|----------------|--------|------------|
+[Google Scholar](https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN) | [ResearchGate] | [团队] | [学院主页]
+
 
 </div>
 
