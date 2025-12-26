@@ -1,46 +1,42 @@
-<div style="display: flex; align-items: stretch; gap: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; max-width: 900px; padding: 20px; color: #333;">
+<div style="display: flex; justify-content: flex-start; align-items: flex-start; gap: 40px; font-family: sans-serif; line-height: 1.5; color: #333; padding: 10px;">
   
-  <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-    <div>
-      <h1 style="margin: 0 0 10px 0; font-size: 28px; color: #1a73e8; border-bottom: 2px solid #e8f0fe; padding-bottom: 10px;">
-        杨泽宇 <span style="font-size: 18px; color: #555; font-weight: normal; margin-left: 10px;">副教授 / 硕士生导师</span>
-      </h1>
-      <p style="margin: 0 0 20px 0; color: #666; font-size: 16px;">
-        Zeyu Yang, Ph.D. <a href="#" style="text-decoration: none; font-size: 14px; color: #1a73e8;">🔗</a>
-      </p>
+  <div style="flex: 0 1 auto; max-width: 500px;">
+    <h1 style="margin: 0 0 10px 0; font-size: 28px; color: #000;">
+      杨泽宇 <span style="font-size: 18px; color: #666; font-weight: normal; margin-left: 10px;">副教授 / 硕士生导师</span>
+    </h1>
+    <p style="margin: 0 0 15px 0; color: #666; font-size: 16px;">
+      Zeyu Yang, Ph.D. <a href="#" style="text-decoration: none; font-size: 14px;">🔗</a>
+    </p>
 
-      <div style="margin-bottom: 25px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <img src="https://img.shields.io/badge/论文-56篇-blue" alt="论文">
-        <img src="https://img.shields.io/badge/专利-14项-green" alt="专利">
-        <img src="https://img.shields.io/badge/基金-15项-orange" alt="基金">
-        <img src="https://img.shields.io/badge/引用-1900+-yellow" alt="引用">
-      </div>
+    <div style="margin-bottom: 20px; display: flex; gap: 6px;">
+      <img src="https://img.shields.io/badge/论文-56篇-blue" alt="论文">
+      <img src="https://img.shields.io/badge/专利-14项-green" alt="专利">
+      <img src="https://img.shields.io/badge/基金-15项-orange" alt="基金">
+      <img src="https://img.shields.io/badge/引用-1900+-yellow" alt="引用">
+    </div>
 
-      <div style="margin-bottom: 25px;">
-        <h4 style="margin: 0 0 8px 0; font-size: 16px; color: #000; display: flex; align-items: center;">基本信息</h4>
-        <div style="font-size: 14px; color: #444; display: grid; gap: 6px;">
-          <p style="margin: 0;"><strong>湖州师范学院 · 工学院</strong></p>
-          <p style="margin: 0;"><span style="margin-right: 8px;">📍</span>浙江湖州，中国</p>
-          <p style="margin: 0;"><span style="margin-right: 8px;">📧</span><a href="mailto:yangzeyu@zjhu.edu.cn" style="color: #1a73e8; text-decoration: none;">yangzeyu@zjhu.edu.cn</a></p>
-        </div>
+    <div style="margin-bottom: 20px;">
+      <h4 style="margin: 0 0 8px 0; font-size: 16px;">基本信息</h4>
+      <div style="font-size: 14px; line-height: 1.8;">
+        <p style="margin: 0;"><strong>湖州师范学院 · 工学院</strong></p>
+        <p style="margin: 0;">📍 浙江湖州，中国</p>
+        <p style="margin: 0;">📧 <a href="mailto:yangzeyu@zjhu.edu.cn" style="color: #0366d6; text-decoration: none;">yangzeyu@zjhu.edu.cn</a></p>
       </div>
     </div>
 
-    <div style="border-top: 1px solid #eee; pt: 15px; padding-top: 15px;">
-      <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #000;">相关链接</h4>
+    <div>
+      <h4 style="margin: 0 0 8px 0; font-size: 16px;">相关链接</h4>
       <p style="font-size: 14px; margin: 0;">
-        <a href="https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN" style="color: #1a73e8; text-decoration: none; font-weight: 500;">Google Scholar</a> ｜ 
-        <a href="#" style="color: #666; text-decoration: none;">ResearchGate</a> ｜ 
-        <a href="#" style="color: #666; text-decoration: none;">科研团队</a> ｜ 
-        <a href="#" style="color: #666; text-decoration: none;">学院主页</a>
+        <a href="https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN" style="color: #0366d6; text-decoration: none;">Google Scholar</a> ｜ 
+        <span style="color: #999;">ResearchGate</span> ｜ 
+        <span style="color: #999;">科研团队</span> ｜ 
+        <span style="color: #999;">学院主页</span>
       </p>
     </div>
   </div>
 
-  <div style="width: 170px; flex-shrink: 0;">
-    <div style="border: 1px solid #eee; padding: 5px; border-radius: 10px; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-      <img src="photo.jpg" alt="杨泽宇 个人照片" style="width: 100%; border-radius: 6px; display: block; object-fit: cover;" />
-    </div>
+  <div style="width: 170px; flex-shrink: 0; padding-top: 5px;">
+    <img src="photo.jpg" alt="杨泽宇 个人照片" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" />
   </div>
 </div>
 
