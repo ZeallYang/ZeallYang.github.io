@@ -1,24 +1,24 @@
-<div align="right">
-  <img src="photo.jpg" width="160" />
-</div>
+<table>
+<tr>
+<td style="vertical-align: top; padding-right: 20px;">
 
-# 杨泽宇 副教授 / 硕士生导师  
-**Zeyu Yang, Ph.D.**
+<h1>杨泽宇 副教授 / 硕士生导师</h1>
+<b>Zeyu Yang, Ph.D.</b><br><br>
 
-![论文](https://img.shields.io/badge/论文-56篇-blue)
-![专利](https://img.shields.io/badge/专利-14项-green)
-![基金](https://img.shields.io/badge/基金-15项-orange)
-![引用](https://img.shields.io/badge/引用-1900+-yellow)
+<img src="badges.png"><br><br>
 
-**湖州师范学院 · 工学院**  
-📍 浙江湖州，中国  
-📧 yangzeyu@zjhu.edu.cn  
+湖州师范学院 · 工学院<br>
+📍 浙江湖州，中国<br>
+📧 yangzeyu@zjhu.edu.cn<br><br>
 
-<div align="center">
+Google Scholar ｜ ResearchGate ｜ 科研团队 ｜ 学院主页
 
-[Google Scholar](https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN) ｜ [ResearchGate] ｜ [科研团队] ｜ [学院主页]
-
-</div>
+</td>
+<td width="180" align="right">
+<img src="photo.jpg" width="160">
+</td>
+</tr>
+</table>
 
 ---
 
