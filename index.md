@@ -1,3 +1,7 @@
+<div align="right">
+  <img src="photo.jpg" width="160" />
+</div>
+
 # 杨泽宇 副教授 / 硕士生导师  
 **Zeyu Yang, Ph.D.**
 
