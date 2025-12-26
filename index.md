@@ -1,31 +1,38 @@
-<div style="display: flex; align-items: flex-start; gap: 24px;">
+<div style="display: flex; align-items: flex-start; gap: 30px; font-family: sans-serif; line-height: 1.6;">
   <div style="flex: 1;">
-    <h1>杨泽宇 副教授 / 硕士生导师</h1>
-    <h3>Zeyu Yang, Ph.D.</h3>
+    <h1 style="margin-top: 0; color: #333;">杨泽宇 副教授 / 硕士生导师</h1>
+    <h3 style="color: #666; margin-bottom: 20px;">
+      Zeyu Yang, Ph.D. <a href="#" style="text-decoration: none; font-size: 14px;">🔗</a>
+    </h3>
 
-    <br>
+    <div style="margin-bottom: 20px;">
+      <h4 style="margin-bottom: 8px;">核心成果</h4>
+      <img src="https://img.shields.io/badge/论文-56篇-blue" alt="论文" style="margin-right: 5px;">
+      <img src="https://img.shields.io/badge/专利-14项-green" alt="专利" style="margin-right: 5px;">
+      <img src="https://img.shields.io/badge/基金-15项-orange" alt="基金" style="margin-right: 5px;">
+      <img src="https://img.shields.io/badge/引用-1900+-yellow" alt="引用">
+    </div>
 
-    ### 核心成果
-    ![论文](https://img.shields.io/badge/论文-56篇-blue)
-    ![专利](https://img.shields.io/badge/专利-14项-green)
-    ![基金](https://img.shields.io/badge/基金-15项-orange)
-    ![引用](https://img.shields.io/badge/引用-1900+-yellow)
+    <div style="margin-bottom: 20px;">
+      <h4 style="margin-bottom: 8px;">基本信息</h4>
+      <p style="margin: 0;"><strong>湖州师范学院 · 工学院</strong></p>
+      <p style="margin: 0;">📍 浙江湖州，中国</p>
+      <p style="margin: 0;">📧 <a href="mailto:yangzeyu@zjhu.edu.cn" style="color: #0366d6; text-decoration: none;">yangzeyu@zjhu.edu.cn</a></p>
+    </div>
 
-    <br>
-
-    ### 基本信息
-    **湖州师范学院 · 工学院**
-    📍 浙江湖州，中国
-    📧 yangzeyu@zjhu.edu.cn
-
-    <br>
-
-    ### 相关链接
-    [Google Scholar](https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN) ｜ ResearchGate ｜ 科研团队 ｜ 学院主页
+    <div>
+      <h4 style="margin-bottom: 8px;">相关链接</h4>
+      <p style="font-size: 15px;">
+        <a href="https://scholar.google.com.hk/citations?user=lbdHYkYAAAAJ&hl=zh-CN" style="color: #0366d6; text-decoration: none;">Google Scholar</a> ｜ 
+        <span style="color: #666;">ResearchGate</span> ｜ 
+        <span style="color: #666;">科研团队</span> ｜ 
+        <span style="color: #666;">学院主页</span>
+      </p>
+    </div>
   </div>
 
-  <div style="width: 200px;">
-    <img src="photo.jpg" alt="杨泽宇 个人照片" style="width: 100%; border-radius: 8px;" />
+  <div style="width: 180px; flex-shrink: 0;">
+    <img src="photo.jpg" alt="杨泽宇 个人照片" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
   </div>
 </div>
 
