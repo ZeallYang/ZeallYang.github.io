@@ -4,15 +4,6 @@
     <h3 style="color: #666; margin-bottom: 20px;">
       Zeyu Yang, Ph.D. <a href="#" style="text-decoration: none; font-size: 14px;">🔗</a>
     </h3>
-
-    <div style="margin-bottom: 20px;">
-      <h4 style="margin-bottom: 8px;">核心成果</h4>
-      <img src="https://img.shields.io/badge/论文-56篇-blue" alt="论文" style="margin-right: 5px;">
-      <img src="https://img.shields.io/badge/专利-14项-green" alt="专利" style="margin-right: 5px;">
-      <img src="https://img.shields.io/badge/基金-15项-orange" alt="基金" style="margin-right: 5px;">
-      <img src="https://img.shields.io/badge/引用-1900+-yellow" alt="引用">
-    </div>
-
     <div style="margin-bottom: 20px;">
       <h4 style="margin-bottom: 8px;">基本信息</h4>
       <p style="margin: 0;"><strong>湖州师范学院 · 工学院</strong></p>
