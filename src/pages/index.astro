@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 import { profile, academicLinks, sections, projects, publications, honors, services } from '../data/profile';
 import SiteHeader from '../components/SiteHeader.astro';
 const mailto = `mailto:${profile.email}`;
@@ -26,7 +27,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       <aside class="sidebar" aria-label="个人资料和页面导航">
         <div class="profile-summary">
           {profile.avatar ? (
-            <img class="avatar" src={asset(profile.avatar)} alt={`${profile.name}的个人照片`} width="112" height="112" />
+            <Image class="avatar" src={profile.avatar} alt={`${profile.name}的个人照片`} width={112} densities={[1, 2, 3]} format="webp" quality={85} loading="eager" decoding="async" />
           ) : (
             <div class="avatar initials" role="img" aria-label={`${profile.name}的姓名首字母标识，非真实肖像`}>
               <span aria-hidden="true">{profile.initials}</span>

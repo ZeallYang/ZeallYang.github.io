@@ -1,4 +1,6 @@
 // 学术资料按最新版《2026-个人信息-杨泽宇（机智学院官网）》更新，正文转录于 PROFILE_CONTENT.md。
+import portrait from '../assets/portrait.jpg';
+
 export const profile = {
   name: '杨泽宇',
   englishName: 'Zeyu Yang',
@@ -6,8 +8,8 @@ export const profile = {
   qualifications: '博士 · 副教授 · 硕士生导师',
   affiliation: '湖州师范大学',
   email: 'yangzeyu@zju.edu.cn',
-  // 用户提供的真实照片；替换 public/portrait.jpg 即可更新。
-  avatar: 'portrait.jpg',
+  // 用户提供的真实照片；替换 src/assets/portrait.jpg 即可更新，设为 null 则显示姓名字母。
+  avatar: portrait,
   description: '杨泽宇，湖州师范大学博士、副教授、硕士生导师。长期致力于工业人工智能、工业大数据分析与应用、工业大模型与智能体等领域研究。',
   biography: [
     '杨泽宇，男，1992 年生，浙江湖州人，博士、副教授、硕士生导师。',

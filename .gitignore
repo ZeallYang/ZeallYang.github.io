@@ -9,7 +9,7 @@ dist/
 *.log
 .DS_Store
 
-# 本地任务说明和照片原件；网站使用 public/portrait.jpg。
+# 本地任务说明和照片原件；网站照片维护在 src/assets/portrait.jpg。
 /AGENTS.md
 /START_HERE.md
 /图片.jpg
