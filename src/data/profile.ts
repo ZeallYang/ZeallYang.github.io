@@ -189,8 +189,8 @@ export const graduateStudents: GraduateCohort[] = [
   { year: 2024, students: [{ name: '陈嘉辉' }, { name: '刘杨美' }, { name: '倪心茹' }] },
   { year: 2023, students: [
     { name: '茅珑瀛', note: '校优秀毕业研究生，杭州师范大学数学学院，博士' },
-    { name: '高文情', note: '亳州市谯城阳光电力维修工程公司' },
+    { name: '高文情', note: '亳州市谯城阳光电力维修工程有限责任公司，综合服务岗' },
   ] },
-  { year: 2022, students: [{ name: '胡婷婷', note: '深圳佰维存储科技公司' }] },
-  { year: 2021, students: [{ name: '贾瑞柠', note: '中国建设银行武安支行' }] },
+  { year: 2022, students: [{ name: '胡婷婷', note: '深圳佰维存储科技股份有限公司，SIPI仿真工程师' }] },
+  { year: 2021, students: [{ name: '贾瑞柠', note: '中国建设银行股份有限公司武安支行，二级业务员' }] },
 ];
