@@ -64,7 +64,7 @@ export const navigation: NavigationItem[] = [
   { label: '课题组动态', href: '/news/' },
   { label: '学术交流', href: '/exchange/' },
   { label: '课题组活动', href: '/activities/' },
-  { label: '课题组成员', href: '/members/', highlight: true },
+  { label: '学生培养', href: '/members/', highlight: true },
 ];
 
 export const projects = [
