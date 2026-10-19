@@ -32,6 +32,7 @@ npm run preview     # 在本地检查构建产物
 - **硕士研究生页面**：`src/pages/members.astro` → `/members/`，展示 2021—2026 级共 15 位研究生及文档提供的相关信息。内容集中在 `profile.ts` 的 `graduateStudents`，添加年级、姓名或备注即可更新；不推断未提供的学籍或职位。
 - **预留空页面**：`activities.astro` → `/activities/`、`resources.astro` → `/resources/`，仍只保留基础 HTML 与标题，暂设 `noindex`。以后设计并补充真实内容后移除；继续扩展时先建立页面文件，再向 `navigation` 添加入口。
 - 顶栏沿用用户设置：页首不透明，滚动后以 400ms 动画变为 29% 不透明度；鼠标移入或键盘操作时恢复清晰，手机展开菜单时也恢复清晰。系统启用“减少动态效果”时取消动画。
+- “课题组”下拉入口使用浅蓝底色、细边框和 16px 加粗文字，在电脑和手机上保持醒目；沿用原菜单内容及整条顶栏的滚动透明效果。
 - `src/styles/global.css`：颜色、字体、间距及电脑／手机适配。
 - `src/assets/portrait.jpg`：用户于 2026-10-19 提供的真实照片，源文件保持原样。头像通过 Astro 内置 `Image` 组件生成 WebP 和 1×／2×／3× 尺寸，手机与电脑自动选择合适版本。以后直接替换此文件即可更新头像；将 `profile.avatar` 设为 `null` 则恢复姓名字母标识。
 - 论文对象的可选 `links` 可填写真实地址，例如 `links: [{ label: 'DOI', url: '已确认的完整地址' }]`；学术账号填写到 `academicLinks`。没有真实地址就保持空，不显示链接按钮。
