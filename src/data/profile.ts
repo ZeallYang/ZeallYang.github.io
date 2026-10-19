@@ -156,28 +156,28 @@ export const publications: Publication[] = [
 ];
 
 export const honors = [
-  { year: 2025, text: '获湖州师范大学“学术新星”A 类项目。' },
-  { year: 2025, text: '获 ISCSIC 国际会议优秀论文奖（Excellent Paper Award）、特邀报告人奖（Invited Speaker Award）。' },
-  { year: 2025, text: '获 ARCAI 国际会议最佳口头报告奖（Best Oral Presentation Award）。' },
-  { year: 2024, text: '入选浙江省青年人才托举培养项目。' },
-  { year: 2024, text: '获 ARCAI 国际会议最佳论文报告奖（Best Paper Presentation Award）。' },
-  { year: 2023, text: '获浙江省青年科技工作者优秀论文。' },
-  { year: 2023, text: '获湖州师范大学“浙北英才”A 类计划。' },
-  { year: 2021, text: '获浙江大学优秀毕业博士研究生。' },
-  { year: 2020, text: '获浙江大学争创优秀博士学位论文资助。' },
+  { year: 2025, text: '获湖州师范大学“学术新星”A 类项目' },
+  { year: 2025, text: '获 ISCSIC 国际会议优秀论文奖（Excellent Paper Award）、特邀报告人奖（Invited Speaker Award）' },
+  { year: 2025, text: '获 ARCAI 国际会议最佳口头报告奖（Best Oral Presentation Award）' },
+  { year: 2024, text: '入选浙江省青年人才托举培养项目' },
+  { year: 2024, text: '获 ARCAI 国际会议最佳论文报告奖（Best Paper Presentation Award）' },
+  { year: 2023, text: '获浙江省青年科技工作者优秀论文' },
+  { year: 2023, text: '获湖州师范大学“浙北英才”A 类计划' },
+  { year: 2021, text: '获浙江大学优秀毕业博士研究生' },
+  { year: 2020, text: '获浙江大学争创优秀博士学位论文资助' },
 ];
 
 export const services = [
-  '国家自然科学基金委通讯评审专家。',
-  '山东省自然科学基金通讯评审专家。',
+  '国家自然科学基金委通讯评审专家',
+  '山东省自然科学基金通讯评审专家',
   '全国研究生教育评估监测专家库专家。',
-  '中国自动化学会数据驱动控制、学习与优化专业委员会委员。',
-  '中国计算机学会工业控制计算机专业委员会执行委员。',
-  '中国机械工程学会工业大数据与智能系统分会委员。',
-  '浙江省自动化学会青年工作委员会副主任委员。',
-  '浙江省自动化学会专家库成员。',
-  '湖州师范大学青年科学技术协会副会长。',
-  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人。',
+  '中国自动化学会数据驱动控制、学习与优化专业委员会委员',
+  '中国计算机学会工业控制计算机专业委员会执行委员',
+  '中国机械工程学会工业大数据与智能系统分会委员',
+  '浙江省自动化学会青年工作委员会副主任委员',
+  '浙江省自动化学会专家库成员',
+  '湖州师范大学青年科学技术协会副会长',
+  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人',
 ];
 
 type GraduateCohort = { year: number; students: { name: string; note?: string }[] };
