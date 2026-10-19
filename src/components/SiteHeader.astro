@@ -1,0 +1,77 @@
+---
+import { profile, showTopNavigation, groupName, navigation } from '../data/profile';
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+const navigationHref = (href: string) => href.startsWith('/') ? asset(href) : href;
+---
+
+    <header class="masthead">
+      <a class="wordmark" href={asset('')} aria-label={`${groupName}，返回主页`}>
+        <span class="monogram" aria-hidden="true">{profile.initials}</span>
+        <span class="group-name">{groupName}</span>
+      </a>
+      {showTopNavigation && <nav class="top-nav" aria-label="网站导航">
+        {navigation.map((item) => 'children' in item ? (
+          <details class="nav-dropdown" name="site-navigation">
+            <summary>{item.label}<span class="dropdown-chevron" aria-hidden="true"></span></summary>
+            <div class="dropdown-panel">
+              {item.children.map((link) => (
+                <a href={navigationHref(link.href)}><span>{link.label}</span>{link.description && <small lang="en">{link.description}</small>}</a>
+              ))}
+            </div>
+          </details>
+        ) : <a class:list={['top-nav-link', { 'home-link': item.href === '/' }]} href={navigationHref(item.href)}>{item.label}</a>)}
+      </nav>}
+    </header>
+    <script>
+      const masthead = document.querySelector<HTMLElement>('.masthead');
+      let scrollFrame = 0;
+      const updateHeader = () => {
+        masthead?.classList.toggle('is-scrolled', window.scrollY > 0);
+        scrollFrame = 0;
+      };
+      updateHeader();
+      window.addEventListener('scroll', () => {
+        if (!scrollFrame) scrollFrame = requestAnimationFrame(updateHeader);
+      }, { passive: true });
+      window.addEventListener('pageshow', updateHeader);
+
+      const dropdowns = Array.from(document.querySelectorAll<HTMLDetailsElement>('.nav-dropdown'));
+      const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const closeOthers = (current: HTMLDetailsElement) => {
+        dropdowns.forEach((dropdown) => { if (dropdown !== current) dropdown.open = false; });
+      };
+
+      dropdowns.forEach((dropdown) => {
+        dropdown.addEventListener('pointerenter', (event) => {
+          if (hoverPointer.matches && event.pointerType !== 'touch') {
+            closeOthers(dropdown);
+            dropdown.open = true;
+          }
+        });
+        dropdown.addEventListener('pointerleave', () => {
+          if (hoverPointer.matches && !dropdown.contains(document.activeElement)) dropdown.open = false;
+        });
+        dropdown.addEventListener('toggle', () => { if (dropdown.open) closeOthers(dropdown); });
+        dropdown.addEventListener('focusout', (event) => {
+          if (!dropdown.contains(event.relatedTarget as Node | null)) dropdown.open = false;
+        });
+        dropdown.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+          dropdown.open = false;
+        }));
+      });
+
+      document.addEventListener('pointerdown', (event) => {
+        dropdowns.forEach((dropdown) => {
+          if (!dropdown.contains(event.target as Node)) dropdown.open = false;
+        });
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        dropdowns.forEach((dropdown) => {
+          if (dropdown.open) {
+            dropdown.open = false;
+            dropdown.querySelector('summary')?.focus();
+          }
+        });
+      });
+    </script>

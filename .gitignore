@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.npm-cache/
+.qa/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# 本地任务说明和照片原件；网站使用 public/portrait.jpg。
+/AGENTS.md
+/START_HERE.md
+/图片.jpg

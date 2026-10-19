@@ -1,0 +1,148 @@
+---
+import '../styles/global.css';
+import { profile, academicLinks, sections, projects, publications, honors, services } from '../data/profile';
+import SiteHeader from '../components/SiteHeader.astro';
+const mailto = `mailto:${profile.email}`;
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase) => phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{profile.name}｜{profile.englishName} · 学术主页</title>
+    <meta name="description" content={profile.description} />
+    <meta name="theme-color" content="#f8f7f3" />
+    <link rel="icon" type="image/svg+xml" href={asset('favicon.svg')} />
+    {Astro.site && <link rel="canonical" href={new URL(import.meta.env.BASE_URL, Astro.site)} />}
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">跳转至主要内容</a>
+    <SiteHeader />
+
+    <div class="page-layout">
+      <aside class="sidebar" aria-label="个人资料和页面导航">
+        <div class="profile-summary">
+          {profile.avatar ? (
+            <img class="avatar" src={asset(profile.avatar)} alt={`${profile.name}的个人照片`} width="112" height="112" />
+          ) : (
+            <div class="avatar initials" role="img" aria-label={`${profile.name}的姓名首字母标识，非真实肖像`}>
+              <span aria-hidden="true">{profile.initials}</span>
+            </div>
+          )}
+          <div class="identity">
+            <h1>{profile.name}</h1>
+            <p class="english-name" lang="en">{profile.englishName}</p>
+            <p class="qualifications">{profile.qualifications}</p>
+            <p class="affiliation">{profile.affiliation}</p>
+          </div>
+          <ul class="sidebar-keywords" aria-label="主要研究关键词">
+            {profile.research.map((item) => <li>{item.title}</li>)}
+          </ul>
+          <a class="email-link" href={mailto}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></svg>
+            {profile.email}
+          </a>
+          {academicLinks.length > 0 && <div class="academic-links">{academicLinks.map((link) => <a href={link.url}>{link.label}</a>)}</div>}
+        </div>
+
+        <nav class="section-nav" aria-label="页面章节">
+          {sections.map((section, index) => (
+            <a href={`#${section.id}`}>
+              <span class="nav-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <span>{section.label}</span>
+              <span class="nav-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <main id="main" tabindex="-1">
+        <section id="about" aria-labelledby="about-heading" class="about-section">
+          <p class="eyebrow" lang="en">About Me</p>
+          <h2 id="about-heading" class="intro-heading">个人简介<span class="heading-dot" aria-hidden="true">.</span></h2>
+          <div class="biography">{profile.biography.map((paragraph) => <p>{paragraph.split(biographyPattern).map((part) => profile.biographyHighlights.includes(part) ? <strong>{part}</strong> : part)}</p>)}</div>
+          <a class="recruit-shortcut" href="#contact"><span class="small-mark" aria-hidden="true">↗</span><span>欢迎对工业大数据与 AI 研究感兴趣的同学加入课题组</span><span class="shortcut-label">了解更多 <span aria-hidden="true">→</span></span></a>
+        </section>
+
+        <section id="research" aria-labelledby="research-heading">
+          <div class="section-heading"><h2 id="research-heading">研究方向</h2><span lang="en">Research Interests</span></div>
+          <ul class="research-list">
+            {profile.research.map((item, index) => (
+              <li><span class="research-number" aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3>{item.topics.length > 0 && <p>{item.topics.join(' · ')}</p>}</li>
+            ))}
+          </ul>
+          <p class="keyword-line"><span>研究关键词</span>{profile.keywords.join(' / ')}</p>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-heading">
+          <div class="section-heading"><h2 id="projects-heading">科研项目 <span class="count">{projects.length}</span></h2><span lang="en">Research Projects</span></div>
+          {['主持', '参与'].map((role) => (
+            <div class="project-group">
+              <h3 class="group-heading">{role}<span>{projects.filter((project) => project.role === role).length} 项</span></h3>
+              <ul class="project-list">
+                {projects.filter((project) => project.role === role).map((project) => (
+                  <li class="project-entry">
+                    <div class="project-title"><h4>{project.title}</h4><span class:list={['role', { 'role-lead': role === '主持' }]}>{project.role}</span></div>
+                    <div class="project-meta"><strong>{project.category}</strong><span class="date-range">{project.dates}</span></div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        <section id="publications" aria-labelledby="publications-heading">
+          <div class="section-heading"><h2 id="publications-heading">代表性论文 <span class="count">{publications.length}</span></h2><span lang="en">Selected Publications</span></div>
+          <p class="section-note">* 表示通讯作者</p>
+          <ol class="publication-list" lang="en">
+            {publications.map((paper, index) => (
+              <li class="publication-entry">
+                <div class="paper-visual">
+                  <span class="paper-badge">{paper.venueLabel} <span>{paper.year}</span></span>
+                  {paper.image ? (
+                    <img class="paper-image" src={asset(paper.image.src)} alt={paper.image.alt} width="640" height="400" loading="lazy" decoding="async" />
+                  ) : (
+                    <div class="paper-placeholder" lang="zh-CN">
+                      <span class="placeholder-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                      <span>论文图示待补充</span>
+                    </div>
+                  )}
+                </div>
+                <div class="paper-content">
+                  <h3>{paper.url ? <a href={paper.url}>{paper.title}</a> : paper.title}</h3>
+                  <p class="authors">{paper.authors.split(/(Zeyu Yang\*?)/).map((author) => author.startsWith('Zeyu Yang') ? <strong>{author}</strong> : author)}.</p>
+                  <p class="venue"><cite>{paper.venue}</cite><span class="venue-year">, {paper.year}.</span></p>
+                  {paper.links && paper.links.length > 0 && <div class="paper-links">{paper.links.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}</div>}
+                  {paper.highlights && paper.highlights.length > 0 && <ul class="paper-highlights" lang="zh-CN">{paper.highlights.map((highlight) => <li>{highlight}</li>)}</ul>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="honors" aria-labelledby="honors-heading">
+          <div class="section-heading"><h2 id="honors-heading">奖励荣誉 <span class="count">{honors.length}</span></h2><span lang="en">Honors &amp; Awards</span></div>
+          <ul class="honor-list">{honors.map((honor) => <li class="honor-entry"><span class="honor-year">{honor.year}</span><span>{honor.text}</span></li>)}</ul>
+        </section>
+
+        <section id="service" aria-labelledby="service-heading">
+          <div class="section-heading"><h2 id="service-heading">学术兼职 <span class="count">{services.length}</span></h2><span lang="en">Academic Service</span></div>
+          <ul class="service-list">{services.map((service) => <li class="service-entry">{service}</li>)}</ul>
+        </section>
+
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+          <p class="eyebrow" lang="en">Contact &amp; Opportunities</p>
+          <h2 id="contact-heading">一起探索工业智能的前沿</h2>
+          <p>{profile.recruiting}</p>
+          <a class="contact-button" href={mailto}>邮件联系 <span lang="en">{profile.email}</span><span aria-hidden="true">↗</span></a>
+        </section>
+
+        <footer class="footer"><span>{profile.name} <span aria-hidden="true">/</span> <span lang="en">{profile.englishName}</span></span><a href="#top">返回页首 <span aria-hidden="true">↑</span></a></footer>
+      </main>
+    </div>
+
+  </body>
+</html>
