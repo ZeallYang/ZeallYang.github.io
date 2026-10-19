@@ -134,4 +134,4 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 
 2026-10-19：用户提供的 `图片.jpg` 确认为杨泽宇老师照片。照片源文件统一维护在 `src/assets/portrait.jpg`，内容未经修改；网站通过 Astro 内置图片组件生成适合头像显示的 WebP 版本。根目录的重复原件已归档到本地 QA 目录，不提交到仓库。
 
-用户确认部署仓库为 `https://github.com/ZeallYang/yangzeyu.github.io`，本人为仓库协作者。按当前仓库名称，默认 GitHub Pages 地址为 `https://zeallyang.github.io/yangzeyu.github.io/`；实际部署地址以 GitHub Pages 设置和部署输出为准。
+用户确认部署仓库已更名为 `https://github.com/ZeallYang/ZeallYang.github.io`，本人为仓库协作者。仓库采用个人主页命名规则，GitHub Pages 地址为 `https://zeallyang.github.io/`，不再使用仓库名子路径；实际部署地址以 GitHub Pages 设置和部署输出为准。

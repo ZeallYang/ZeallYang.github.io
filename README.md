@@ -40,9 +40,9 @@ npm run preview     # 在本地检查构建产物
 
 ## 发布到现有 GitHub 仓库
 
-仓库：[ZeallYang/yangzeyu.github.io](https://github.com/ZeallYang/yangzeyu.github.io)。按当前仓库名称，GitHub Pages 默认地址为 **[https://zeallyang.github.io/yangzeyu.github.io/](https://zeallyang.github.io/yangzeyu.github.io/)**。这是项目站点，因为仓库名与所有者 `ZeallYang.github.io` 不一致；无需为此重建或重命名仓库。
+仓库：[ZeallYang/ZeallYang.github.io](https://github.com/ZeallYang/ZeallYang.github.io)。仓库名符合个人主页命名规则，GitHub Pages 正式地址为 **[https://zeallyang.github.io/](https://zeallyang.github.io/)**，无需仓库名子路径。
 
-工作流使用 [Astro 官方 GitHub Pages Action](https://docs.astro.build/en/guides/deploy/github/) 构建上传，并通过 GitHub 的 `configure-pages` 自动读取 `site` 和 `base`。本地仍使用根路径，照片、样式、菜单、研究生页面和 canonical 会自动适配线上子路径。**无需手动添加 ASTRO_SITE / ASTRO_BASE 仓库变量，也无需提供老师账号的密码或 Token。**
+工作流使用 [Astro 官方 GitHub Pages Action](https://docs.astro.build/en/guides/deploy/github/) 构建上传，并通过 GitHub 的 `configure-pages` 自动读取 `site` 和 `base`。本地和当前线上站点均使用根路径，照片、样式、菜单、研究生页面和 canonical 会自动适配部署地址。**无需手动添加 ASTRO_SITE / ASTRO_BASE 仓库变量，也无需提供老师账号的密码或 Token。**
 
 ### 1. 启用 GitHub Pages
 
@@ -55,7 +55,7 @@ npm run preview     # 在本地检查构建产物
 已关联仓库的开发目录可以直接继续使用。换电脑时，在 VS Code 终端将仓库克隆到一个尚不存在的目录：
 
 ```powershell
-git clone https://github.com/ZeallYang/yangzeyu.github.io.git D:\yangzeyu-publish
+git clone https://github.com/ZeallYang/ZeallYang.github.io.git D:\yangzeyu-publish
 ```
 
 如果要求登录，通过弹出的 GitHub 登录界面使用**你自己的账号**完成授权。
@@ -96,18 +96,18 @@ git push
 
 向 `main` 推送后会自动重新部署，无需上传 `dist/`，也不需要每次操作 Pages 设置。
 
-## 本地模拟正式子路径
+## 本地模拟正式部署
 
 普通 `npm run dev` 仍在根路径预览。需要模拟正式部署时，在同一个 PowerShell 终端运行：
 
 ```powershell
 $env:ASTRO_SITE = 'https://zeallyang.github.io'
-$env:ASTRO_BASE = '/yangzeyu.github.io'
+$env:ASTRO_BASE = '/'
 npm run build
 npm run preview
 ```
 
-打开预览地址下的 `/yangzeyu.github.io/`。停止预览后运行 `Remove-Item Env:ASTRO_SITE, Env:ASTRO_BASE`，并重新 `npm run build`，即可恢复本地根路径构建产物。
+打开终端显示的预览地址根路径。停止预览后运行 `Remove-Item Env:ASTRO_SITE, Env:ASTRO_BASE`，并重新 `npm run build`，即可恢复不含线上 canonical 的本地构建产物。若以后改用项目仓库部署，再将 `ASTRO_BASE` 设为对应的 `/仓库名/`；当前个人主页不需要子路径。
 
 ## 以后绑定独立域名
 
