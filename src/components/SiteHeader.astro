@@ -2,6 +2,7 @@
 import { profile, showTopNavigation, groupName, navigation } from '../data/profile';
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
 const navigationHref = (href: string) => href.startsWith('/') ? asset(href) : href;
+const isCurrentPage = (href: string) => navigationHref(href).replace(/\/+$/, '') === Astro.url.pathname.replace(/\/+$/, '');
 ---
 
     <header class="masthead">
@@ -19,7 +20,7 @@ const navigationHref = (href: string) => href.startsWith('/') ? asset(href) : hr
               ))}
             </div>
           </details>
-        ) : <a class:list={['top-nav-link', { 'home-link': item.href === '/' }]} href={navigationHref(item.href)}>{item.label}</a>)}
+        ) : <a class:list={['top-nav-link', { 'home-link': item.href === '/' }]} href={navigationHref(item.href)} aria-current={isCurrentPage(item.href) ? 'page' : undefined}>{item.label}</a>)}
       </nav>}
     </header>
     <script>

@@ -11,8 +11,8 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>硕士研究生｜{groupName}</title>
-    <meta name="description" content={`${groupName}硕士研究生名单，按年级排列。`} />
+    <title>课题组成员｜{groupName}</title>
+    <meta name="description" content={`${groupName}成员信息，当前展示按年级排列的硕士研究生名单。`} />
     <meta name="theme-color" content="#f8f7f3" />
     <link rel="icon" type="image/svg+xml" href={asset('favicon.svg')} />
     {Astro.site && <link rel="canonical" href={new URL(asset('members/'), Astro.site)} />}
@@ -21,11 +21,11 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
     <a class="skip-link" href="#main">跳转至主要内容</a>
     <SiteHeader />
     <main id="main" class="members-page" tabindex="-1">
-      <nav class="breadcrumb" aria-label="当前位置"><a href={asset('')}>主页</a><span aria-hidden="true">/</span><span aria-current="page">硕士研究生</span></nav>
+      <nav class="breadcrumb" aria-label="当前位置"><a href={asset('')}>主页</a><span aria-hidden="true">/</span><span aria-current="page">课题组成员</span></nav>
       <header class="members-intro">
-        <p class="eyebrow" lang="en">Graduate Students</p>
-        <h1>硕士研究生<span class="heading-dot" aria-hidden="true">.</span></h1>
-        <p>按年级排列 <span aria-hidden="true">·</span> {graduateStudents.length} 个年级 <span aria-hidden="true">·</span> {studentCount} 位同学</p>
+        <p class="eyebrow" lang="en">Group Members</p>
+        <h1>课题组成员<span class="heading-dot" aria-hidden="true">.</span></h1>
+        <p>硕士研究生 <span aria-hidden="true">·</span> {graduateStudents.length} 个年级 <span aria-hidden="true">·</span> {studentCount} 位同学</p>
       </header>
       <nav class="cohort-nav" aria-label="按年级浏览">{graduateStudents.map((cohort) => <a href={`#cohort-${cohort.year}`}>{cohort.year} 级</a>)}</nav>
       <div class="cohort-list">

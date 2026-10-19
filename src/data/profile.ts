@@ -61,14 +61,10 @@ export const groupName = '工业智能感知与自主学习课题组';
 
 // 顶部只导航到独立页面；页面内容尚待设计，不在这里重复主页章节。
 export const navigation: NavigationItem[] = [
-  {
-    label: '课题组',
-    children: [
-      { label: '硕士研究生', href: '/members/' },
-      { label: '课题组活动', href: '/activities/' },
-    ],
-  },
-  { label: '资源下载', href: '/resources/' },
+  { label: '课题组动态', href: '/news/' },
+  { label: '学术交流', href: '/exchange/' },
+  { label: '课题组活动', href: '/activities/' },
+  { label: '课题组成员', href: '/members/' },
 ];
 
 export const projects = [

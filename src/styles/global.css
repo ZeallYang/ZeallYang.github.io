@@ -62,11 +62,12 @@ section { scroll-margin-top: 0; }
 .monogram { display: grid; flex: none; place-items: center; width: 28px; height: 28px; border: 1px solid #b3c0c7; font-size: 12px; letter-spacing: -1px; }
 .top-nav { display: flex; align-items: center; gap: 8px; }
 .top-nav-link, .nav-dropdown > summary { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; line-height: 1.8; cursor: pointer; border-radius: 3px; }
+.top-nav-link { white-space: nowrap; }
+.top-nav-link[aria-current="page"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
 .nav-dropdown { position: relative; }
-.nav-dropdown > summary { list-style: none; min-height: 44px; padding: 8px 17px; border: 1px solid #becdd7; background: #e5edf2; color: var(--accent); font-size: 16px; font-weight: 700; line-height: 1.5; white-space: nowrap; }
+.nav-dropdown > summary { list-style: none; }
 .nav-dropdown > summary::-webkit-details-marker { display: none; }
 .top-nav-link:hover, .nav-dropdown > summary:hover, .nav-dropdown[open] > summary { color: var(--accent); background: var(--tint); }
-.nav-dropdown > summary:hover, .nav-dropdown[open] > summary { border-color: #8ba5b7; background: #d7e4ed; }
 .dropdown-chevron { width: 6px; height: 6px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
 .nav-dropdown[open] .dropdown-chevron { margin-top: 3px; transform: rotate(225deg); }
 .dropdown-panel { position: absolute; top: calc(100% + 8px); right: 0; width: 232px; padding: 7px; border: 1px solid var(--line); border-radius: 5px; background: #fffefa; box-shadow: 0 10px 30px #243d4c14; }
@@ -218,12 +219,12 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
 
 @media (max-width: 680px) {
   :root { --header-offset: 100px; }
-  :root:has(.top-nav) { --header-offset: 140px; }
+  :root:has(.top-nav) { --header-offset: 200px; }
   .masthead { flex-wrap: wrap; gap: 12px; }
-  .top-nav { position: relative; width: 100%; justify-content: space-between; gap: 4px; }
+  .top-nav { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 4px 12px; }
   .home-link { display: none; }
   .top-nav-link, .nav-dropdown > summary { padding: 8px 6px; gap: 6px; font-size: 14px; }
-  .nav-dropdown > summary { padding: 8px 16px; font-size: 16px; }
+  .top-nav-link { min-height: 44px; }
   .nav-dropdown { position: static; }
   .dropdown-panel { left: 0; right: 0; width: auto; }
   .publication-entry { grid-template-columns: minmax(0, 1fr); gap: 20px; }
