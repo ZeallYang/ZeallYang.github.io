@@ -20,7 +20,7 @@ const isCurrentPage = (href: string) => navigationHref(href).replace(/\/+$/, '')
               ))}
             </div>
           </details>
-        ) : <a class:list={['top-nav-link', { 'home-link': item.href === '/' }]} href={navigationHref(item.href)} aria-current={isCurrentPage(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        ) : <a class:list={['top-nav-link', { 'home-link': item.href === '/' }]} href={navigationHref(item.href)} aria-current={isCurrentPage(item.href) ? 'page' : undefined}><span class="nav-label">{item.label}{item.highlight && <span class="nav-dot" aria-hidden="true"></span>}</span></a>)}
       </nav>}
     </header>
     <script>

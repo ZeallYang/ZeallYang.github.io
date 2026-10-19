@@ -50,7 +50,7 @@ export const sections = [
   { id: 'contact', label: '加入课题组', english: 'Contact' },
 ];
 
-type NavigationLink = { label: string; href: string; description?: string };
+type NavigationLink = { label: string; href: string; description?: string; highlight?: boolean };
 type NavigationItem = NavigationLink | { label: string; children: NavigationLink[] };
 
 // 设为 false 可隐藏整个顶部菜单，左侧章节导航不受影响。
@@ -64,7 +64,7 @@ export const navigation: NavigationItem[] = [
   { label: '课题组动态', href: '/news/' },
   { label: '学术交流', href: '/exchange/' },
   { label: '课题组活动', href: '/activities/' },
-  { label: '课题组成员', href: '/members/' },
+  { label: '课题组成员', href: '/members/', highlight: true },
 ];
 
 export const projects = [
