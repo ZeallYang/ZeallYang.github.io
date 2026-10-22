@@ -187,11 +187,10 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         <div><h2 id="figure-title"></h2><p id="figure-paper-title" lang="en"></p></div>
         <button class="lightbox-close" type="button" aria-label="关闭图片" autofocus>×</button>
       </header>
-      <div class="figure-stage" tabindex="0" aria-label="论文图示，放大后可拖动图片或滚动查看细节">
+      <div class="figure-stage" tabindex="0" aria-label="论文图示：滚轮或双指缩放，放大后拖动查看；键盘加减号缩放，方向键平移，0 重置">
         <img class="lightbox-image" alt="" decoding="async" draggable="false" />
       </div>
       <footer class="lightbox-footer">
-        <button class="figure-zoom" type="button" aria-pressed="false">放大细节</button>
         <a class="figure-original" target="_blank" rel="noopener noreferrer">打开原图 <span aria-hidden="true">↗</span></a>
       </footer>
     </dialog>
@@ -202,24 +201,50 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       const stage = lightbox.querySelector<HTMLElement>('.figure-stage')!;
       const title = lightbox.querySelector<HTMLElement>('#figure-title')!;
       const paperTitle = lightbox.querySelector<HTMLElement>('#figure-paper-title')!;
-      const zoom = lightbox.querySelector<HTMLButtonElement>('.figure-zoom')!;
       const original = lightbox.querySelector<HTMLAnchorElement>('.figure-original')!;
       let returnFocus: HTMLElement | null = null;
-      let drag: { pointerId: number; x: number; y: number; left: number; top: number } | null = null;
+      const pointers = new Map<number, { x: number; y: number }>();
+      let scale = 1;
+      let offset = { x: 0, y: 0 };
       let backdropPressed = false;
 
       const stopDragging = () => {
-        const pointerId = drag?.pointerId;
-        drag = null;
+        const ids = [...pointers.keys()];
+        pointers.clear();
         stage.classList.remove('is-dragging');
-        if (pointerId !== undefined && stage.hasPointerCapture(pointerId)) stage.releasePointerCapture(pointerId);
+        ids.forEach((id) => { if (stage.hasPointerCapture(id)) stage.releasePointerCapture(id); });
+      };
+      const renderFigure = () => {
+        if (!lightbox.open || !image.naturalWidth) return;
+        const fit = Math.min((stage.clientWidth - 32) / image.naturalWidth, (stage.clientHeight - 32) / image.naturalHeight, 1);
+        const width = image.naturalWidth * fit;
+        const height = image.naturalHeight * fit;
+        const limitX = Math.max(0, (width * scale - stage.clientWidth) / 2);
+        const limitY = Math.max(0, (height * scale - stage.clientHeight) / 2);
+        offset.x = Math.max(-limitX, Math.min(limitX, offset.x));
+        offset.y = Math.max(-limitY, Math.min(limitY, offset.y));
+        image.style.width = `${width}px`;
+        image.style.height = `${height}px`;
+        image.style.transform = `translate(-50%, -50%) translate(${offset.x}px, ${offset.y}px) scale(${scale})`;
+        stage.classList.toggle('is-zoomed', scale > 1);
+        stage.classList.toggle('is-dragging', scale > 1 && pointers.size > 0);
+      };
+      // Preserve the image point beneath the cursor or the midpoint of a pinch.
+      const zoomAt = (nextScale: number, from: { x: number; y: number }, to = from) => {
+        const bounds = stage.getBoundingClientRect();
+        const center = { x: bounds.left + stage.clientWidth / 2, y: bounds.top + stage.clientHeight / 2 };
+        const clamped = Math.max(1, Math.min(8, nextScale));
+        const ratio = clamped / scale;
+        offset.x = to.x - center.x - (from.x - center.x - offset.x) * ratio;
+        offset.y = to.y - center.y - (from.y - center.y - offset.y) * ratio;
+        scale = clamped;
+        renderFigure();
       };
       const resetZoom = () => {
         stopDragging();
-        stage.classList.remove('is-zoomed');
-        zoom.textContent = '放大细节';
-        zoom.setAttribute('aria-pressed', 'false');
-        stage.scrollTo(0, 0);
+        scale = 1;
+        offset = { x: 0, y: 0 };
+        renderFigure();
       };
       const openFigure = (trigger: HTMLAnchorElement) => {
         if (lightbox.open) return;
@@ -232,6 +257,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         original.href = image.src;
         resetZoom();
         lightbox.showModal();
+        renderFigure();
       };
 
       document.querySelectorAll<HTMLAnchorElement>('.paper-image-trigger').forEach((trigger) => {
@@ -241,35 +267,55 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
           openFigure(trigger);
         });
       });
-      zoom.addEventListener('click', () => {
-        stopDragging();
-        const expanded = stage.classList.toggle('is-zoomed');
-        zoom.textContent = expanded ? '适应窗口' : '放大细节';
-        zoom.setAttribute('aria-pressed', String(expanded));
-        stage.scrollTo(expanded ? (stage.scrollWidth - stage.clientWidth) / 2 : 0, 0);
-      });
+      image.addEventListener('load', renderFigure);
+      new ResizeObserver(renderFigure).observe(stage);
+      stage.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? stage.clientHeight : 1;
+        const delta = Math.max(-240, Math.min(240, event.deltaY * unit));
+        zoomAt(scale * Math.exp(-delta * 0.002), { x: event.clientX, y: event.clientY });
+      }, { passive: false });
       stage.addEventListener('pointerdown', (event) => {
-        if (!stage.classList.contains('is-zoomed') || !event.isPrimary || event.button !== 0 || drag) return;
-        const bounds = stage.getBoundingClientRect();
-        // Keep the native scrollbars usable as an alternative to dragging.
-        if (event.clientX >= bounds.left + stage.clientWidth || event.clientY >= bounds.top + stage.clientHeight) return;
+        if (event.button !== 0 || (event.pointerType === 'mouse' && scale === 1)) return;
         event.preventDefault();
         stage.focus({ preventScroll: true });
-        drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: stage.scrollLeft, top: stage.scrollTop };
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
         stage.setPointerCapture(event.pointerId);
-        stage.classList.add('is-dragging');
+        renderFigure();
       });
+      const gesture = () => {
+        const [a, b = a] = [...pointers.values()];
+        return { center: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, distance: Math.hypot(a.x - b.x, a.y - b.y) };
+      };
       stage.addEventListener('pointermove', (event) => {
-        if (!drag || event.pointerId !== drag.pointerId) return;
-        stage.scrollLeft = drag.left - (event.clientX - drag.x);
-        stage.scrollTop = drag.top - (event.clientY - drag.y);
+        if (!pointers.has(event.pointerId)) return;
+        const before = gesture();
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        const after = gesture();
+        const ratio = before.distance > 0 ? after.distance / before.distance : 1;
+        zoomAt(scale * ratio, before.center, after.center);
       });
       const finishDragging = (event: PointerEvent) => {
-        if (event.pointerId === drag?.pointerId) stopDragging();
+        if (!pointers.delete(event.pointerId)) return;
+        if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
+        renderFigure();
       };
       window.addEventListener('pointerup', finishDragging);
       window.addEventListener('pointercancel', finishDragging);
       stage.addEventListener('lostpointercapture', finishDragging);
+      stage.addEventListener('keydown', (event) => {
+        const bounds = stage.getBoundingClientRect();
+        const center = { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 };
+        if (event.key === '+' || event.key === '=') zoomAt(scale * 1.25, center);
+        else if (event.key === '-') zoomAt(scale / 1.25, center);
+        else if (event.key === '0') resetZoom();
+        else if (event.key.startsWith('Arrow')) {
+          offset.x += event.key === 'ArrowLeft' ? 40 : event.key === 'ArrowRight' ? -40 : 0;
+          offset.y += event.key === 'ArrowUp' ? 40 : event.key === 'ArrowDown' ? -40 : 0;
+          renderFigure();
+        } else return;
+        event.preventDefault();
+      });
       const closeFigure = () => lightbox.close();
       lightbox.querySelector('.lightbox-close')!.addEventListener('click', closeFigure);
       const outsideImageViewer = (event: MouseEvent) => {
