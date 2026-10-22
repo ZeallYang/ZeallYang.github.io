@@ -149,6 +149,7 @@ main > section + section { margin-top: 52px; }
 .venue { font-size: 15px; color: var(--accent); margin-top: 6px; line-height: 1.8; }
 .venue cite { font-style: italic; }
 .venue-year { color: var(--muted); }
+.venue-note { margin-top: 8px; color: var(--accent); font-size: 15px; line-height: 1.8; }
 .paper-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 15px; font-weight: 600; }
 .paper-highlights { padding-left: 18px; margin-top: 12px; font-size: 15px; line-height: 1.9; }
 .paper-highlights li + li { margin-top: 5px; }

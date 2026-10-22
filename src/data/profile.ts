@@ -90,6 +90,8 @@ type Publication = {
   venue: string;
   venueLabel: string;
   year: number;
+  // 按个人资料文档列示的期刊说明，不代表实时分区核验。
+  venueNote?: string;
   // 图示放入 public/papers/；没有真实图示时显示明确的占位区。
   image?: { src: string; alt: string };
   // 仅填写已确认的论文地址和研究要点。
@@ -104,51 +106,61 @@ export const publications: Publication[] = [
     authors: 'Zeyu Yang, Jiahui Chen, Zhen Bi, Xiaoyu Jiang, Le Yao, Jungang Lou, Zhihuan Song',
     title: 'CLARI: Constrained Reflective LLM Inference for Few-Shot Soft Sensing under Operating-Condition Drift',
     venue: 'Control Engineering Practice', venueLabel: 'CEP', year: 2026,
+    venueNote: '国际控制工程与工业应用领域顶刊，SCI二区期刊',
   },
   {
     authors: 'Gecheng Chen, Zeyu Yang*, Xinkai Chen, Jianqiang Li, Chengwen Luo',
     title: 'Towards the Bi-imbalance: A Pruning-based Contrastive Domain Adaptation Framework for Industrial Fault Diagnosis',
     venue: 'IEEE/CAA Journal of Automatica Sinica', venueLabel: 'IEEE/CAA JAS', year: 2026,
+    venueNote: '国际自动化与控制领域顶刊，SCI一区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Wenqing Gao, Gecheng Chen, Jiaxin Yu, Bocun He, Lingjian Ye',
     title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing',
     venue: 'IEEE Transactions on Automation Science and Engineering', venueLabel: 'IEEE TASE', year: 2026,
+    venueNote: '国际智能控制与自动化领域顶刊，SCI二区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Longying Mao, Lingjian Ye, Yiran Ma, Zhihuan Song, Zhichao Chen',
     title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov-Arnold Network for Industrial Soft Sensors',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2025,
+    venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Tingting Hu, Le Yao, Lingjian Ye, Yi Qiu, Shuxin Du',
     title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2024,
+    venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Le Yao, Bingbing Shen, Peiliang Wang',
     title: 'Probabilistic Fusion Model for Industrial Soft Sensing Based on Quality-Relevant Feature Clustering',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2023,
+    venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Junhua Zheng, Zhiqiang Ge',
     title: 'Lifelong Bayesian Learning Machines for Streaming Industrial Big Data',
     venue: 'IEEE Transactions on Systems, Man, and Cybernetics: Systems', venueLabel: 'IEEE TSMC', year: 2023,
+    venueNote: '国际人工智能领域顶刊，SCI一区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'On Paradigm of Industrial Big Data Analytics: From Evolution to Revolution',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2022,
+    venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'Rethinking the Value of Just-In-Time Learning in the Era of Industrial Big Data',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2022,
+    venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'Industrial Virtual Sensing for Big Process Data based on Parallelized Nonlinear Variational Bayesian Factor Regression',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2020,
+    venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
   },
 ];
 

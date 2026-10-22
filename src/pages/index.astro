@@ -96,7 +96,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
 
         <section id="publications" aria-labelledby="publications-heading">
           <div class="section-heading"><h2 id="publications-heading">代表性论文 <span class="count">{publications.length}</span></h2><span lang="en">Selected Publications</span></div>
-          <p class="section-note">* 表示通讯作者</p>
+          <p class="section-note">* 表示通讯作者；期刊说明按提供的个人资料列示。</p>
           <ol class="publication-list" lang="en">
             {publications.map((paper, index) => (
               <li class="publication-entry">
@@ -115,6 +115,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
                   <h3>{paper.url ? <a href={paper.url}>{paper.title}</a> : paper.title}</h3>
                   <p class="authors">{paper.authors.split(/(Zeyu Yang\*?)/).map((author) => author.startsWith('Zeyu Yang') ? <strong>{author}</strong> : author)}.</p>
                   <p class="venue"><cite>{paper.venue}</cite><span class="venue-year">, {paper.year}.</span></p>
+                  {paper.venueNote && <p class="venue-note" lang="zh-CN">（{paper.venueNote}）</p>}
                   {paper.links && paper.links.length > 0 && <div class="paper-links">{paper.links.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}</div>}
                   {paper.highlights && paper.highlights.length > 0 && <ul class="paper-highlights" lang="zh-CN">{paper.highlights.map((highlight) => <li>{highlight}</li>)}</ul>}
                 </div>
