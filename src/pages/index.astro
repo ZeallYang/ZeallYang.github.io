@@ -149,23 +149,22 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
           <ul class="honor-list">{honors.map((honor) => <li class="honor-entry"><span class="honor-year">{honor.year}</span><span>{honor.text}</span></li>)}</ul>
         </section>
 
-        <section id="service" aria-labelledby="service-heading">
-          <div class="section-heading"><h2 id="service-heading">学术兼职 <span class="count">{services.length}</span></h2><span lang="en">Academic Service</span></div>
-          <ul class="service-list">{services.map((service) => <li class="service-entry">{service}</li>)}</ul>
-        </section>
-
-        <section id="workshops" aria-labelledby="workshops-heading">
-          <div class="section-heading"><h2 id="workshops-heading">组织专题研讨会 <span class="count">{organizedWorkshops.length}</span></h2><span lang="en">Organized Workshops</span></div>
-          <ol class="workshop-list">
-            {organizedWorkshops.map((workshop) => (
-              <li>
-                <h3>{workshop.conference}专题研讨会</h3>
-                <p>{workshop.topic}</p>
-                <p lang="en">{workshop.englishTopic}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+        {sections.filter((section) => section.id === 'workshops' || section.id === 'service').map((section) => (
+          <section id={section.id} aria-labelledby={`${section.id}-heading`}>
+            <div class="section-heading"><h2 id={`${section.id}-heading`}>{section.label} <span class="count">{section.id === 'workshops' ? organizedWorkshops.length : services.length}</span></h2><span lang="en">{section.english}</span></div>
+            {section.id === 'workshops' ? (
+              <ol class="workshop-list">
+                {organizedWorkshops.map((workshop) => (
+                  <li>
+                    <h3>{workshop.conference}专题研讨会</h3>
+                    <p>{workshop.topic}</p>
+                    <p lang="en">{workshop.englishTopic}</p>
+                  </li>
+                ))}
+              </ol>
+            ) : <ul class="service-list">{services.map((service) => <li class="service-entry">{service}</li>)}</ul>}
+          </section>
+        ))}
 
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">
           <p class="eyebrow" lang="en">Contact &amp; Opportunities</p>
