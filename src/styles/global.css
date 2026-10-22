@@ -80,7 +80,7 @@ section { scroll-margin-top: 0; }
 .page-layout { display: grid; grid-template-columns: 264px minmax(0, 1fr); column-gap: 64px; max-width: 1160px; margin: auto; padding-top: 50px; }
 .sidebar { position: sticky; top: calc(var(--header-offset) + 12px); align-self: start; padding: 0 30px 12px 0; border-right: 1px solid var(--line); }
 .avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; margin-bottom: 22px; }
-img.avatar { height: auto; border-radius: 6px; object-fit: contain; }
+img.avatar { object-fit: contain; background: #fff; }
 .initials { display: grid; place-items: center; color: var(--accent); background: #e9eeeb; border: 1px solid #d6dfda; font: 44px Georgia, serif; letter-spacing: -3px; }
 .initials span { padding-right: 3px; }
 h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.5; letter-spacing: .1em; }
