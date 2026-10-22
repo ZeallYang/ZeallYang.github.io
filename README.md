@@ -25,14 +25,15 @@ npm run preview     # 在本地检查构建产物
 - `src/data/profile.ts`：姓名、完整简介、关键词、项目、论文、荣誉、学术兼职与招生原文；项目角色控制“主持／参与”分组。所有学术内容在此维护。
 - 当前最新版包含 13 项项目（主持 8 项、参与 5 项）、10 篇代表性论文、9 项荣誉、10 项学术兼职；邮箱为 `yangzeyu@zju.edu.cn`。与初始资料冲突时，以此次用户提供的最新版文档和更新后的 `PROFILE_CONTENT.md` 为准。
 - `profile.biographyHighlights`：简介中需要突出显示的原文片段；只需填写与正文一致的文字，页面自动加粗强调。
+- `profile.research`：每项填写 `title`；`topics` 是可选的细分方向数组，省略或设为 `[]` 时只显示标题。
 - 顶栏左侧名称由 `groupName` 维护，沿用用户设置的“工业智能感知与自主学习课题组”。点击名称返回主页。
 - `src/pages/index.astro`：主页布局与菜单交互；左侧章节目录由 `src/data/profile.ts` 的 `sections` 维护。
-- 顶部菜单由 `src/data/profile.ts` 的 `navigation` 维护，四个直接入口为“课题组动态／学术交流／课题组活动／学生培养”。共享的 `src/components/SiteHeader.astro` 统一维护主页和学生培养页面的顶栏，当前栏目用细下划线标识；内部路径自动带上 Astro `BASE_URL`。如以后需要下拉菜单，仍可在 `navigation` 中使用 `children`，支持鼠标、触屏和键盘操作。
+- 顶部菜单由 `src/data/profile.ts` 的 `navigation` 维护，当前入口为“课题组动态／学术交流／学生培养”。共享的 `src/components/SiteHeader.astro` 统一维护主页和学生培养页面的顶栏，当前栏目用细下划线标识；内部路径自动带上 Astro `BASE_URL`。如以后需要下拉菜单，仍可在 `navigation` 中使用 `children`，支持鼠标、触屏和键盘操作。
 - **暂时不用顶部菜单**：将同一文件中的 `showTopNavigation` 改为 `false`；改回 `true` 即恢复。隐藏菜单不会删除页面，也不影响左侧章节导航。
 - **学生培养页面**：`src/pages/members.astro` → `/members/`，当前展示 2021—2026 级共 15 位硕士研究生及已提供的相关信息。内容集中在 `profile.ts` 的 `graduateStudents`，添加年级、姓名或备注即可更新；不推断未提供的学籍或职位。
 - **预留空页面**：`news.astro` → `/news/`、`exchange.astro` → `/exchange/`、`activities.astro` → `/activities/`，只保留基础 HTML 与标题，暂设 `noindex`。原 `resources.astro` → `/resources/` 文件保留，当前不放入菜单。以后补充真实内容后移除 `noindex`；继续扩展时先建立页面文件，再向 `navigation` 添加入口。
 - 顶栏沿用用户设置：页首不透明，滚动后以 400ms 动画变为 29% 不透明度；鼠标移入或键盘操作时恢复清晰，手机展开菜单时也恢复清晰。系统启用“减少动态效果”时取消动画。
-- 顶部菜单使用简洁文字样式，电脑上四项并排，手机上两行、每行两项；整条顶栏仍沿用原有的滚动透明效果。
+- 顶部菜单使用简洁文字样式，电脑上并排显示，手机上每行最多两项；整条顶栏仍沿用原有的滚动透明效果。
 - 学生培养入口文字右上角的静态小红点用于强调入口，由 `navigation` 中该项的 `highlight: true` 控制；改为 `false` 或移除此字段即可隐藏。
 - `src/styles/global.css`：颜色、字体、间距及电脑／手机适配。
 - `src/assets/portrait.jpg`：用户于 2026-10-19 提供的真实照片，源文件保持原样。头像通过 Astro 内置 `Image` 组件生成 WebP 和 1×／2×／3× 尺寸，手机与电脑自动选择合适版本。以后直接替换此文件即可更新头像；将 `profile.avatar` 设为 `null` 则恢复姓名字母标识。

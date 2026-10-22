@@ -1,6 +1,8 @@
 // 学术资料按最新版《2026-个人信息-杨泽宇（机智学院官网）》更新，正文转录于 PROFILE_CONTENT.md。
 import portrait from '../assets/portrait.jpg';
 
+type ResearchInterest = { title: string; topics?: string[] };
+
 export const profile = {
   name: '杨泽宇',
   englishName: 'Zeyu Yang',
@@ -30,11 +32,10 @@ export const profile = {
   ],
   keywords: ['过程监测', '工业软测量', '故障诊断', '质量预报', '工业Agent', '自适应建模'],
   research: [
-  { title: '工业人工智能' },
-  { title: '工业大数据分析与应用' },
-  { title: '工业大模型与智能体' },
-],
-
+    { title: '工业人工智能' },
+    { title: '工业大数据分析与应用' },
+    { title: '工业大模型与智能体' },
+  ] as ResearchInterest[],
   recruiting: '欢迎自驱力强、对工业人工智能与工业大数据研究感兴趣的同学加入本课题组，一起探索在智能制造场景中的前沿算法设计与工业应用（有意愿者可推荐继续攻读博士）。',
 };
 
