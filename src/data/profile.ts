@@ -47,9 +47,9 @@ export const sections = [
   { id: 'research', label: '研究方向', english: 'Research' },
   { id: 'projects', label: '科研项目', english: 'Projects' },
   { id: 'publications', label: '代表性论文', english: 'Publications' },
-  { id: 'honors', label: '奖励荣誉', english: 'Honors' },
-  { id: 'service', label: '学术兼职', english: 'Academic Service' },
+  { id: 'honors', label: '奖励荣誉', english: 'Honors' },  
   { id: 'workshops', label: '组织专题研讨会', english: 'Organized Workshops' },
+  { id: 'service', label: '学术兼职', english: 'Academic Service' },
   { id: 'contact', label: '加入课题组', english: 'Contact' },
 ];
 
@@ -201,19 +201,6 @@ export const honors = [
   { year: 2020, text: '获浙江大学争创优秀博士学位论文资助' },
 ];
 
-export const services = [
-  '国家自然科学基金委通讯评审专家',
-  '山东省自然科学基金通讯评审专家',
-  '全国研究生教育评估监测专家库专家',
-  '中国自动化学会数据驱动控制、学习与优化专业委员会委员',
-  '中国计算机学会工业控制计算机专业委员会执行委员',
-  '中国机械工程学会工业大数据与智能系统分会委员',
-  '浙江省自动化学会青年工作委员会副主任委员',
-  '浙江省自动化学会专家库成员',
-  '湖州师范大学青年科学技术协会副会长',
-  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人',
-];
-
 export const organizedWorkshops = [
   {
     conference: '第41届中国自动化学会青年学术年会（YAC 2026）',
@@ -225,6 +212,19 @@ export const organizedWorkshops = [
     topic: '新一代人工智能驱动的复杂系统过程监测及故障诊断',
     englishTopic: 'New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems',
   },
+];
+
+export const services = [
+  '国家自然科学基金委通讯评审专家',
+  '山东省自然科学基金通讯评审专家',
+  '全国研究生教育评估监测专家库专家',
+  '中国自动化学会数据驱动控制、学习与优化专业委员会委员',
+  '中国计算机学会工业控制计算机专业委员会执行委员',
+  '中国机械工程学会工业大数据与智能系统分会委员',
+  '浙江省自动化学会青年工作委员会副主任委员',
+  '浙江省自动化学会专家库成员',
+  '湖州师范大学青年科学技术协会副会长',
+  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人',
 ];
 
 type GraduateCohort = { year: number; students: { name: string; note?: string }[] };
