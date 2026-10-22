@@ -129,8 +129,8 @@ main > section + section { margin-top: 52px; }
 .project-entry { padding: 16px 0; border-bottom: 1px solid #e7e7e1; }
 .project-title { display: flex; align-items: start; gap: 16px; justify-content: space-between; }
 .project-title h4 { font-size: 17px; line-height: 1.8; font-weight: 600; }
-.role { flex: none; border: 1px solid #dce0dc; padding: 0 8px; margin-top: 2px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.8; }
-.role-lead { color: var(--accent); border-color: #ccd7db; background: #edf1f1; }
+.role { flex: none; margin-top: 2px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.8; }
+.role-lead { color: var(--accent); }
 .project-meta { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 15px; margin-top: 7px; color: var(--muted); font-size: 14px; line-height: 1.9; }
 .project-meta strong { color: var(--accent); font-weight: 600; }
 .date-range { white-space: nowrap; font-variant-numeric: tabular-nums; }
