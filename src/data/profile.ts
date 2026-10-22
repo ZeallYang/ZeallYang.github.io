@@ -47,9 +47,9 @@ export const sections = [
   { id: 'research', label: '研究方向', english: 'Research' },
   { id: 'projects', label: '科研项目', english: 'Projects' },
   { id: 'publications', label: '代表性论文', english: 'Publications' },
-  { id: 'honors', label: '奖励荣誉', english: 'Honors' },  
-  { id: 'workshops', label: '组织专题研讨会', english: 'Organized Workshops' },
+  { id: 'honors', label: '奖励荣誉', english: 'Honors' },    
   { id: 'service', label: '学术兼职', english: 'Academic Service' },
+  { id: 'workshops', label: '组织专题研讨会', english: 'Organized Workshops' },
   { id: 'contact', label: '加入课题组', english: 'Contact' },
 ];
 
@@ -201,19 +201,6 @@ export const honors = [
   { year: 2020, text: '获浙江大学争创优秀博士学位论文资助' },
 ];
 
-export const organizedWorkshops = [
-  {
-    conference: '第41届中国自动化学会青年学术年会（YAC 2026）',
-    topic: '面向工业数据智能的质量信息深度感知理论与方法',
-    englishTopic: 'Theories and methods for deep perception of quality information in industrial data intelligence',
-  },
-  {
-    conference: '第9届计算机科学与智能控制国际会议（ISCSIC 2025）',
-    topic: '新一代人工智能驱动的复杂系统过程监测及故障诊断',
-    englishTopic: 'New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems',
-  },
-];
-
 export const services = [
   '国家自然科学基金委通讯评审专家',
   '山东省自然科学基金通讯评审专家',
@@ -225,6 +212,19 @@ export const services = [
   '浙江省自动化学会专家库成员',
   '湖州师范大学青年科学技术协会副会长',
   '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人',
+];
+
+export const organizedWorkshops = [
+  {
+    conference: '第41届中国自动化学会青年学术年会（YAC 2026）',
+    topic: '面向工业数据智能的质量信息深度感知理论与方法',
+    englishTopic: 'Theories and methods for deep perception of quality information in industrial data intelligence',
+  },
+  {
+    conference: '第9届计算机科学与智能控制国际会议（ISCSIC 2025）',
+    topic: '新一代人工智能驱动的复杂系统过程监测及故障诊断',
+    englishTopic: 'New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems',
+  },
 ];
 
 type GraduateCohort = { year: number; students: { name: string; note?: string }[] };
