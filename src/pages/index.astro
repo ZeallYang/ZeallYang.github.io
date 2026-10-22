@@ -75,6 +75,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
               <li><span class="research-number" aria-hidden="true">0{index + 1}</span><h3>{title}</h3>{topics.length > 0 && <p>{topics.join(' · ')}</p>}</li>
             ))}
           </ul>
+          {profile.keywords.length > 0 && <p class="keyword-line"><span>研究关键词</span>{profile.keywords.join(' / ')}</p>}
         </section>
 
         <section id="projects" aria-labelledby="projects-heading">
