@@ -236,17 +236,15 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
 .news-section-heading h2 { margin-top: 4px; font: 600 27px/1.5 var(--serif); letter-spacing: .04em; }
 .achievements-section .news-section-heading h2 { color: #a13e35; }
 .news-title-row { display: flex; align-items: center; gap: 18px; }
-.news-backlink { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 14px; text-decoration: none; white-space: nowrap; }
+.news-backlink { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; transform: translateY(6px); font-size: 14px; text-decoration: none; white-space: nowrap; }
 .news-backlink:hover { text-decoration: underline; }
 .news-list { list-style: none; }
 .news-entry { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 26px; padding: 26px 0; border-bottom: 1px solid var(--line); }
 .news-entry > time { padding-top: 2px; color: var(--muted); font: 17px/1.8 Georgia, serif; font-variant-numeric: tabular-nums; }
 .news-entry-content { min-width: 0; }
-.achievement-byline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; margin-bottom: 10px; font-size: 17px; }
-.achievement-byline strong { font-weight: 600; }
-.achievement-byline strong > span { padding-left: 4px; color: var(--muted); font-size: 14px; font-weight: 400; }
-.achievement-venue { color: #a13e35; font-size: 14px; font-weight: 600; }
-.achievement-title { font-size: 18px; font-weight: 500; line-height: 1.7; overflow-wrap: anywhere; }
+.achievement-message { font-size: 17px; line-height: 1.9; overflow-wrap: anywhere; }
+.achievement-message strong { font-weight: 600; }
+.achievement-venue { color: #a13e35; font-weight: 500; }
 .exchange-title { color: var(--accent); font-size: 18px; font-weight: 600; line-height: 1.8; overflow-wrap: anywhere; }
 .exchange-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; margin-top: 10px; color: var(--muted); font-size: 15px; }
 .exchange-meta strong { color: var(--ink); font-weight: 500; }
@@ -312,8 +310,7 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
   .news-section-heading h2 { font-size: 24px; }
   .news-entry { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 22px 0; }
   .news-entry > time { padding: 0; font-size: 15px; }
-  .achievement-title, .exchange-title { font-size: 17px; }
-  .achievement-byline { margin-bottom: 8px; }
+  .exchange-title { font-size: 17px; }
   .exchange-meta { gap: 4px; font-size: 14px; }
   .exchange-meta > p { width: 100%; }
   .members-intro { margin-top: 28px; }

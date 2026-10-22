@@ -45,8 +45,7 @@ const exchanges = newestFirst(academicExchanges);
             <li class="news-entry">
               <time datetime={item.date}>{item.date.replace('-', '.')}</time>
               <article class="news-entry-content">
-                <p class="achievement-byline"><strong>{item.student}<span>同学</span></strong><span class="achievement-venue" lang="en">{item.venue}</span></p>
-                <h3 class="achievement-title" lang="en">{item.title}</h3>
+                <p class="achievement-message">恭喜<strong>{item.student}</strong>同学在 <span class="achievement-venue" lang="en">{item.venue}</span> 发表论文。</p>
               </article>
             </li>
           ))}

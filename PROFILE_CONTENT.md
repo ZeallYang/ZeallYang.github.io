@@ -141,6 +141,8 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 
 页面分为成果喜报与学术交流，各自按年月倒序展示；同月记录保持用户给出的顺序。学术交流照片后续补充，当前不显示占位图片。以下记录仅来自用户本次提供的信息。
 
+用户后续调整：成果喜报统一展示“恭喜某某同学在期刊全称发表论文”，不展示论文标题。IEEE TIM 全称为 IEEE Transactions on Instrumentation and Measurement；IEEE TASE 全称为 IEEE Transactions on Automation Science and Engineering；CEP 全称为 Control Engineering Practice。下列原始记录的标题保留供内容维护使用。
+
 成果喜报：
 
 - 胡婷婷，2024.09，IEEE TIM，Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing

@@ -254,11 +254,11 @@ type AcademicExchange = {
 
 // 日期统一填写 YYYY-MM；页面自动倒序排列，同月条目保留录入顺序。
 export const researchAchievements: ResearchAchievement[] = [
-  { date: '2024-09', student: '胡婷婷', venue: 'IEEE TIM', title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing' },
-  { date: '2025-03', student: '茅珑瀛', venue: 'IEEE TIM', title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors' },
+  { date: '2024-09', student: '胡婷婷', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing' },
+  { date: '2025-03', student: '茅珑瀛', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors' },
   { date: '2025-12', student: '茅珑瀛', venue: 'IEEE Sensors Journal', title: 'Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing' },
-  { date: '2026-02', student: '高文情', venue: 'IEEE TASE', title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing' },
-  { date: '2026-08', student: '陈嘉辉', venue: 'CEP', title: 'CLARI: Constrained reflective LLM inference for few-shot soft sensing under operating-condition drift' },
+  { date: '2026-02', student: '高文情', venue: 'IEEE Transactions on Automation Science and Engineering', title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing' },
+  { date: '2026-08', student: '陈嘉辉', venue: 'Control Engineering Practice', title: 'CLARI: Constrained reflective LLM inference for few-shot soft sensing under operating-condition drift' },
 ];
 
 export const academicExchanges: AcademicExchange[] = [
