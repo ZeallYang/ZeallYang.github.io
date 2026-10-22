@@ -49,6 +49,7 @@ export const sections = [
   { id: 'publications', label: '代表性论文', english: 'Publications' },
   { id: 'honors', label: '奖励荣誉', english: 'Honors' },
   { id: 'service', label: '学术兼职', english: 'Academic Service' },
+  { id: 'workshops', label: '组织会议', english: 'Conference Organization' },
   { id: 'contact', label: '加入课题组', english: 'Contact' },
 ];
 

@@ -132,18 +132,19 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         <section id="service" aria-labelledby="service-heading">
           <div class="section-heading"><h2 id="service-heading">学术兼职 <span class="count">{services.length}</span></h2><span lang="en">Academic Service</span></div>
           <ul class="service-list">{services.map((service) => <li class="service-entry">{service}</li>)}</ul>
-          <section class="workshops" aria-labelledby="workshops-heading">
-            <h3 id="workshops-heading" class="group-heading">组织专题研讨会</h3>
-            <ol class="workshop-list">
-              {organizedWorkshops.map((workshop) => (
-                <li>
-                  <h4>{workshop.conference}专题研讨会</h4>
-                  <p>{workshop.topic}</p>
-                  <p lang="en">{workshop.englishTopic}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
+        </section>
+
+        <section id="workshops" aria-labelledby="workshops-heading">
+          <div class="section-heading"><h2 id="workshops-heading">组织会议 <span class="count">{organizedWorkshops.length}</span></h2><span lang="en">Conference Organization</span></div>
+          <ol class="workshop-list">
+            {organizedWorkshops.map((workshop) => (
+              <li>
+                <h3>{workshop.conference}专题研讨会</h3>
+                <p>{workshop.topic}</p>
+                <p lang="en">{workshop.englishTopic}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">
