@@ -97,7 +97,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
 
         <section id="publications" aria-labelledby="publications-heading">
           <div class="section-heading"><h2 id="publications-heading">代表性论文 <span class="count">{publications.length}</span></h2><span lang="en">Selected Publications</span></div>
-          <p class="section-note">* 表示通讯作者；期刊说明按提供的个人资料列示。</p>
+          <p class="section-note">* 表示通讯作者</p>
           <ol class="publication-list" lang="en">
             {publications.map((paper, index) => (
               <li class="publication-entry">
