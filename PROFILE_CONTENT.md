@@ -70,6 +70,11 @@ Zeyu Yang, Zhiqiang Ge, Rethinking the Value of Just-In-Time Learning in the Era
 
 Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on Parallelized Nonlinear Variational Bayesian Factor Regression, IEEE Transactions on Instrumentation and Measurement, 2020.（国际仪器和测量领域顶刊，SCI二区TOP 期刊）
 
+## 组织专题研讨会（用户补充）
+
+1. 第41届中国自动化学会青年学术年会（YAC 2026）专题研讨会：面向工业数据智能的质量信息深度感知理论与方法（Theories and methods for deep perception of quality information in industrial data intelligence）
+2. 第9届计算机科学与智能控制国际会议（ISCSIC 2025）专题研讨会：新一代人工智能驱动的复杂系统过程监测及故障诊断（New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems）
+
 ## 硕士研究生
 
 2026级：邵闻起、强锐达、刘俊鑫、邵航、唐雨婷

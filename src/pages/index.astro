@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { Image } from 'astro:assets';
-import { profile, academicLinks, sections, projects, publications, honors, services } from '../data/profile';
+import { profile, academicLinks, sections, projects, publications, honors, services, organizedWorkshops } from '../data/profile';
 import SiteHeader from '../components/SiteHeader.astro';
 const mailto = `mailto:${profile.email}`;
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
@@ -132,6 +132,18 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         <section id="service" aria-labelledby="service-heading">
           <div class="section-heading"><h2 id="service-heading">学术兼职 <span class="count">{services.length}</span></h2><span lang="en">Academic Service</span></div>
           <ul class="service-list">{services.map((service) => <li class="service-entry">{service}</li>)}</ul>
+          <section class="workshops" aria-labelledby="workshops-heading">
+            <h3 id="workshops-heading" class="group-heading">组织专题研讨会</h3>
+            <ol class="workshop-list">
+              {organizedWorkshops.map((workshop) => (
+                <li>
+                  <h4>{workshop.conference}专题研讨会</h4>
+                  <p>{workshop.topic}</p>
+                  <p lang="en">{workshop.englishTopic}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
         </section>
 
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">

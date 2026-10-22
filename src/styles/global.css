@@ -159,6 +159,14 @@ main > section + section { margin-top: 52px; }
 .service-list { list-style: none; }
 .service-entry { position: relative; padding: 7px 0 7px 18px; font-size: 16px; line-height: 1.95; }
 .service-entry::before { content: ""; position: absolute; left: 0; top: 21px; width: 4px; height: 4px; background: #728796; }
+.workshops { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.workshop-list { padding-left: 24px; margin-top: 12px; }
+.workshop-list li { padding-left: 4px; font-size: 16px; line-height: 1.9; }
+.workshop-list li + li { margin-top: 20px; }
+.workshop-list li::marker { color: var(--accent); font-weight: 600; }
+.workshop-list h4 { color: var(--accent); font-size: 16px; font-weight: 600; }
+.workshop-list p { margin-top: 4px; }
+.workshop-list p[lang] { color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
 main > .contact-section { background: var(--tint); border-top: 2px solid var(--accent); padding: 30px 32px 33px; }
 .contact-section h2 { font: 600 24px/1.6 var(--serif); margin: 8px 0 15px; }
 .contact-section > p:not(.eyebrow) { font-size: 16px; line-height: 2; }

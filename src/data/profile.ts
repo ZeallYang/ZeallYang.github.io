@@ -189,6 +189,19 @@ export const services = [
   '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、IECR 等国外权威 SCI 期刊审稿人',
 ];
 
+export const organizedWorkshops = [
+  {
+    conference: '第41届中国自动化学会青年学术年会（YAC 2026）',
+    topic: '面向工业数据智能的质量信息深度感知理论与方法',
+    englishTopic: 'Theories and methods for deep perception of quality information in industrial data intelligence',
+  },
+  {
+    conference: '第9届计算机科学与智能控制国际会议（ISCSIC 2025）',
+    topic: '新一代人工智能驱动的复杂系统过程监测及故障诊断',
+    englishTopic: 'New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems',
+  },
+];
+
 type GraduateCohort = { year: number; students: { name: string; note?: string }[] };
 
 // 按文档中的年级排列；括号内信息原样保留，不推断学籍或职位。
