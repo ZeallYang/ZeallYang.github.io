@@ -120,8 +120,6 @@ main > section + section { margin-top: 52px; }
 .research-number { color: #667c8c; font-size: 12px; font-variant-numeric: tabular-nums; }
 .research-list h3 { font-size: 18px; font-weight: 700; margin: 7px 0; color: var(--accent); }
 .research-list p { font-size: 14px; color: var(--muted); }
-.keyword-line { font-size: 14px; color: var(--muted); line-height: 2; }
-.keyword-line > span { margin-right: 13px; color: var(--ink); }
 .group-heading { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; margin-bottom: 4px; color: var(--accent); }
 .group-heading > span { font-size: 14px; font-weight: 400; color: var(--muted); }
 .project-group + .project-group { margin-top: 27px; }
@@ -280,8 +278,6 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
   .research-number { padding-top: 3px; }
   .research-list h3 { margin: 0; font-size: 17px; }
   .research-list p { grid-column: 2; margin-top: 5px; }
-  .keyword-line { font-size: 14px; }
-  .keyword-line > span { display: block; margin-bottom: 4px; }
   .project-title { gap: 9px; }
   .project-title h4 { font-size: 16px; }
   .project-meta { gap: 2px 10px; }
