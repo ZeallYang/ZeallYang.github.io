@@ -163,7 +163,8 @@ main > section + section { margin-top: 52px; }
 main > .contact-section { background: var(--tint); border-top: 2px solid var(--accent); padding: 30px 32px 33px; }
 .contact-section h2 { font: 600 24px/1.6 var(--serif); margin: 8px 0 15px; }
 .contact-section > p:not(.eyebrow) { font-size: 16px; line-height: 2; }
-.contact-button { display: inline-flex; flex-wrap: wrap; gap: 5px 14px; align-items: center; margin-top: 22px; padding: 9px 15px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; }
+.contact-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-top: 22px; }
+.contact-button { display: inline-flex; flex-wrap: wrap; gap: 5px 14px; align-items: center; min-height: 44px; max-width: 100%; padding: 9px 15px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; }
 .contact-button:hover { background: #1b3b51; color: #fff; }
 .contact-button span[lang] { font-size: 14px; overflow-wrap: anywhere; }
 .footer { display: flex; gap: 14px; justify-content: space-between; padding: 26px 0 35px; margin-top: 32px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
