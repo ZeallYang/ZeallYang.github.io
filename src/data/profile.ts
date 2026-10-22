@@ -216,7 +216,7 @@ export const services = [
 
 export const organizedWorkshops = [
   {
-    conference: '第41届中国自动化学会青年学术年会（YAC 2026）',
+    conference: '第 41 届中国自动化学会青年学术年会（YAC 2026）',
     topic: '面向工业数据智能的质量信息深度感知理论与方法',
     englishTopic: 'Theories and methods for deep perception of quality information in industrial data intelligence',
   },
@@ -270,5 +270,5 @@ export const academicExchanges: AcademicExchange[] = [
   { date: '2025-11', students: ['倪心茹'], conference: '2025 中国工业计算机大会（ICCC 2025）', location: '云南昆明' },
   { date: '2026-05', students: ['倪心茹', '戚鸿斐'], conference: '第十五届数据驱动控制与学习系统会议（DDCLS’26）', location: '湖南吉首' },
   { date: '2026-08', students: ['茅珑瀛'], conference: '第 23 届国际自动控制联合会世界大会（IFAC World Congress 2026）', location: '韩国釜山' },
-  { date: '2026-05', students: ['王鑫'], conference: '第41届中国自动化学会青年学术年会（YAC 2026）', location: '湖南长沙' },
+  { date: '2026-05', students: ['王鑫'], conference: '第 41 届中国自动化学会青年学术年会（YAC 2026）', location: '湖南长沙' },
 ];

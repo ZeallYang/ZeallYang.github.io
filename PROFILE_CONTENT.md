@@ -72,7 +72,7 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 
 ## 组织专题研讨会（用户补充）
 
-1. 第41届中国自动化学会青年学术年会（YAC 2026）专题研讨会：面向工业数据智能的质量信息深度感知理论与方法（Theories and methods for deep perception of quality information in industrial data intelligence）
+1. 第 41 届中国自动化学会青年学术年会（YAC 2026）专题研讨会：面向工业数据智能的质量信息深度感知理论与方法（Theories and methods for deep perception of quality information in industrial data intelligence）
 2. 第9届计算机科学与智能控制国际会议（ISCSIC 2025）专题研讨会：新一代人工智能驱动的复杂系统过程监测及故障诊断（New-Gen AI-Driven Process Monitoring & Fault Diagnosis for Complex Systems）
 
 ## 硕士研究生
@@ -159,7 +159,7 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 - 2025.11，课题组倪心茹同学参加 2025 中国工业计算机大会（ICCC 2025），云南昆明
 - 2026.05，课题组倪心茹、戚鸿斐同学参加第十五届数据驱动控制与学习系统会议（DDCLS’26），湖南吉首
 - 2026.08，课题组茅珑瀛同学参加第 23 届国际自动控制联合会世界大会（IFAC World Congress 2026），韩国釜山
-- 2026.05，课题组王鑫同学参加第41届中国自动化学会青年学术年会（YAC 2026），湖南长沙
+- 2026.05，课题组王鑫同学参加第 41 届中国自动化学会青年学术年会（YAC 2026），湖南长沙
 
 ### 此前补充
 
