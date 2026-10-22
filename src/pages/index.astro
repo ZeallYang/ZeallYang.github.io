@@ -103,7 +103,17 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
                 <div class="paper-visual">
                   <span class="paper-badge">{paper.venueLabel} <span>{paper.year}</span></span>
                   {paper.image ? (
-                    <img class="paper-image" src={asset(paper.image.src)} alt={paper.image.alt} width="640" height="400" loading="lazy" decoding="async" />
+                    <a
+                      class="paper-image-trigger"
+                      href={asset(paper.image.src)}
+                      data-figure-src={asset(paper.image.src)}
+                      data-figure-caption={paper.image.caption || paper.image.alt}
+                      aria-label={`放大查看：${paper.image.alt}`}
+                      aria-haspopup="dialog"
+                    >
+                      <img class="paper-image" src={asset(paper.image.thumbnail || paper.image.src)} alt={paper.image.alt} width={paper.image.width} height={paper.image.height} loading="lazy" decoding="async" />
+                      <span class="figure-hint" lang="zh-CN"><span class="hover-hint">悬停 2 秒或</span>点击查看大图 <span aria-hidden="true">↗</span></span>
+                    </a>
                   ) : (
                     <div class="paper-placeholder" lang="zh-CN">
                       <span class="placeholder-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
@@ -112,11 +122,21 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
                   )}
                 </div>
                 <div class="paper-content">
-                  <h3>{paper.url ? <a href={paper.url}>{paper.title}</a> : paper.title}</h3>
+                  <h3>{paper.url ? <a href={paper.url} target="_blank" rel="noopener noreferrer">{paper.title}</a> : paper.title}</h3>
                   <p class="authors">{paper.authors.split(/(Zeyu Yang\*?)/).map((author) => author.startsWith('Zeyu Yang') ? <strong>{author}</strong> : author)}.</p>
                   <p class="venue"><cite>{paper.venue}</cite><span class="venue-year">, {paper.year}.</span></p>
                   {paper.venueNote && <p class="venue-note" lang="zh-CN">（{paper.venueNote}）</p>}
-                  {paper.links && paper.links.length > 0 && <div class="paper-links">{paper.links.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}</div>}
+                  {((paper.links?.length || 0) > 0 || paper.wechatUrl) && <div class="paper-links">
+                    {paper.links?.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<span aria-hidden="true"> ↗</span></a>)}
+                    {paper.wechatUrl && <a class="wechat-link" href={paper.wechatUrl} target="_blank" rel="noopener noreferrer" aria-label={`微信公众号解读：${paper.title}`}>
+                      <svg class="wechat-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M9 3C4.6 3 1 5.8 1 9.3c0 1.9 1.1 3.6 2.8 4.8L3 17l3.2-1.6c.8.2 1.8.3 2.8.3.4 0 .8 0 1.2-.1-.5-.8-.7-1.7-.7-2.6 0-3.6 3.4-6.5 7.5-6.5h.1C15.9 4.4 12.7 3 9 3Z" />
+                        <path fill="currentColor" d="M23 13c0-3-2.9-5.4-6.5-5.4S10 10 10 13s2.9 5.4 6.5 5.4c.8 0 1.6-.1 2.3-.3L22 20l-.7-2.9c1.1-1 1.7-2.4 1.7-4.1Z" />
+                        <g fill="#fff"><circle cx="6.3" cy="8" r="1" /><circle cx="11.7" cy="8" r="1" /><circle cx="14.3" cy="12" r=".8" /><circle cx="18.7" cy="12" r=".8" /></g>
+                      </svg>
+                      <span lang="zh-CN">微信公众号</span><span aria-hidden="true">↗</span>
+                    </a>}
+                  </div>}
                   {paper.highlights && paper.highlights.length > 0 && <ul class="paper-highlights" lang="zh-CN">{paper.highlights.map((highlight) => <li>{highlight}</li>)}</ul>}
                 </div>
               </li>
@@ -161,5 +181,106 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       </main>
     </div>
 
+    <dialog class="paper-lightbox" aria-labelledby="figure-title" aria-describedby="figure-paper-title">
+      <header class="lightbox-header">
+        <div><h2 id="figure-title"></h2><p id="figure-paper-title" lang="en"></p></div>
+        <button class="lightbox-close" type="button" aria-label="关闭图片" autofocus>×</button>
+      </header>
+      <div class="figure-stage" tabindex="0" aria-label="论文图示，放大后可滚动查看细节">
+        <img class="lightbox-image" alt="" decoding="async" />
+      </div>
+      <footer class="lightbox-footer">
+        <button class="figure-zoom" type="button" aria-pressed="false">放大细节</button>
+        <a class="figure-original" target="_blank" rel="noopener noreferrer">打开原图 <span aria-hidden="true">↗</span></a>
+        <span class="lightbox-help">右上角 × 关闭</span>
+      </footer>
+    </dialog>
+
+    <script>
+      const lightbox = document.querySelector<HTMLDialogElement>('.paper-lightbox')!;
+      const image = lightbox.querySelector<HTMLImageElement>('.lightbox-image')!;
+      const stage = lightbox.querySelector<HTMLElement>('.figure-stage')!;
+      const title = lightbox.querySelector<HTMLElement>('#figure-title')!;
+      const paperTitle = lightbox.querySelector<HTMLElement>('#figure-paper-title')!;
+      const zoom = lightbox.querySelector<HTMLButtonElement>('.figure-zoom')!;
+      const original = lightbox.querySelector<HTMLAnchorElement>('.figure-original')!;
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+      let hoverTimer: ReturnType<typeof setTimeout> | undefined;
+      let returnFocus: HTMLElement | null = null;
+      let activeTrigger: HTMLAnchorElement | null = null;
+      let dismissedTrigger: HTMLAnchorElement | null = null;
+
+      const cancelHover = () => {
+        clearTimeout(hoverTimer);
+        hoverTimer = undefined;
+      };
+      const resetZoom = () => {
+        stage.classList.remove('is-zoomed');
+        zoom.textContent = '放大细节';
+        zoom.setAttribute('aria-pressed', 'false');
+        stage.scrollTo(0, 0);
+      };
+      const openFigure = (trigger: HTMLAnchorElement, fromHover = false) => {
+        cancelHover();
+        if (lightbox.open) return;
+        activeTrigger = trigger;
+        returnFocus = fromHover ? document.activeElement as HTMLElement : trigger;
+        const thumbnail = trigger.querySelector<HTMLImageElement>('img')!;
+        image.src = trigger.dataset.figureSrc!;
+        image.alt = thumbnail.alt;
+        title.textContent = trigger.dataset.figureCaption!;
+        paperTitle.textContent = trigger.closest('.publication-entry')?.querySelector('h3')?.textContent || '';
+        original.href = image.src;
+        resetZoom();
+        lightbox.showModal();
+      };
+
+      document.querySelectorAll<HTMLAnchorElement>('.paper-image-trigger').forEach((trigger) => {
+        trigger.addEventListener('pointerenter', (event) => {
+          cancelHover();
+          if (!finePointer.matches || event.pointerType === 'touch' || lightbox.open || dismissedTrigger === trigger) return;
+          hoverTimer = setTimeout(() => {
+            if (trigger.matches(':hover')) openFigure(trigger, true);
+          }, 2000);
+        });
+        trigger.addEventListener('pointerleave', () => {
+          cancelHover();
+          if (dismissedTrigger === trigger) dismissedTrigger = null;
+        });
+        trigger.addEventListener('pointerdown', cancelHover);
+        trigger.addEventListener('click', (event) => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          openFigure(trigger);
+        });
+      });
+      zoom.addEventListener('click', () => {
+        const expanded = stage.classList.toggle('is-zoomed');
+        zoom.textContent = expanded ? '适应窗口' : '放大细节';
+        zoom.setAttribute('aria-pressed', String(expanded));
+        stage.scrollTo(expanded ? (stage.scrollWidth - stage.clientWidth) / 2 : 0, 0);
+      });
+      const closeFigure = () => {
+        dismissedTrigger = activeTrigger;
+        lightbox.close();
+      };
+      lightbox.querySelector('.lightbox-close')!.addEventListener('click', closeFigure);
+      lightbox.addEventListener('click', (event) => {
+        if (event.target !== lightbox) return;
+        const bounds = lightbox.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeFigure();
+      });
+      lightbox.addEventListener('cancel', () => { dismissedTrigger = activeTrigger; });
+      lightbox.addEventListener('close', () => {
+        cancelHover();
+        resetZoom();
+        image.removeAttribute('src');
+        returnFocus?.focus({ preventScroll: true });
+      });
+      window.addEventListener('scroll', cancelHover, { passive: true });
+      window.addEventListener('blur', cancelHover);
+      document.addEventListener('visibilitychange', cancelHover);
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') cancelHover(); });
+    </script>
   </body>
 </html>

@@ -137,6 +137,14 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 
 ## 用户后续补充
 
+2026-10-22：用户提供“代表性论文”目录中的 10 篇 PDF，用于提取各篇框架图或代表性图示。原始 PDF 仅保留本地，网页使用独立导出的 WebP 缩略图和高清图；图号、PDF 页码与导出记录保存在本地维护资料中。论文标题链接到对应的 ScienceDirect、IEEE Xplore 或 IEEE/CAA JAS 正式页面。
+
+用户提供的微信公众号解读链接：
+
+- CEP 2026（CLARI）：https://mp.weixin.qq.com/s/D0PyjYxBluLKi9wNAKnbfQ
+- TASE 2026（SDDA）：https://mp.weixin.qq.com/s/BXffZAkmrBxcFgC_6kwtdA
+- JAS 2026（PCDA）：https://mp.weixin.qq.com/s/L7jVwDqvd0CnHtHMBNUw0A
+
 2026-10-19：用户提供的 `图片.jpg` 确认为杨泽宇老师照片。照片源文件统一维护在 `src/assets/portrait.jpg`，内容未经修改；网站通过 Astro 内置图片组件生成适合头像显示的 WebP 版本。根目录的重复原件已归档到本地 QA 目录，不提交到仓库。
 
 用户确认部署仓库已更名为 `https://github.com/ZeallYang/ZeallYang.github.io`，本人为仓库协作者。仓库采用个人主页命名规则，GitHub Pages 地址为 `https://zeallyang.github.io/`，不再使用仓库名子路径；实际部署地址以 GitHub Pages 设置和部署输出为准。

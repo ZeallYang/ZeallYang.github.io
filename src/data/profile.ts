@@ -94,9 +94,10 @@ type Publication = {
   // 按个人资料文档列示的期刊说明，不代表实时分区核验。
   venueNote?: string;
   // 图示放入 public/papers/；没有真实图示时显示明确的占位区。
-  image?: { src: string; alt: string };
+  image?: { src: string; thumbnail?: string; alt: string; caption?: string; width: number; height: number };
   // 仅填写已确认的论文地址和研究要点。
   url?: string;
+  wechatUrl?: string;
   highlights?: string[];
   // 可按需添加真实 DOI / PDF / Code 链接；未提供时页面不显示链接区。
   links?: { label: string; url: string }[];
@@ -108,60 +109,83 @@ export const publications: Publication[] = [
     title: 'CLARI: Constrained Reflective LLM Inference for Few-Shot Soft Sensing under Operating-Condition Drift',
     venue: 'Control Engineering Practice', venueLabel: 'CEP', year: 2026,
     venueNote: '国际控制工程与工业应用领域顶刊，SCI二区期刊',
+    url: 'https://www.sciencedirect.com/science/article/pii/S0967066126004302',
+    wechatUrl: 'https://mp.weixin.qq.com/s/D0PyjYxBluLKi9wNAKnbfQ',
+    image: { src: 'papers/clari-2026.webp', thumbnail: 'papers/clari-2026-thumb.webp', alt: 'CLARI 的分布约束识别、结构约束推理和物理约束推理总体架构', caption: '图 1 · CLARI 总体架构', width: 1412, height: 872 },
   },
   {
     authors: 'Gecheng Chen, Zeyu Yang*, Xinkai Chen, Jianqiang Li, Chengwen Luo',
     title: 'Towards the Bi-imbalance: A Pruning-based Contrastive Domain Adaptation Framework for Industrial Fault Diagnosis',
     venue: 'IEEE/CAA Journal of Automatica Sinica', venueLabel: 'IEEE/CAA JAS', year: 2026,
     venueNote: '国际自动化与控制领域顶刊，SCI一区TOP期刊',
+    url: 'https://www.ieee-jas.net/en/article/doi/10.1109/JAS.2026.126002',
+    wechatUrl: 'https://mp.weixin.qq.com/s/L7jVwDqvd0CnHtHMBNUw0A',
+    image: { src: 'papers/pcda-2026.webp', thumbnail: 'papers/pcda-2026-thumb.webp', alt: 'PCDA 的不平衡感知对比表征学习和边界感知对抗域适应总体架构', caption: '图 2 · PCDA 总体架构', width: 1062, height: 1952 },
   },
   {
     authors: 'Zeyu Yang, Wenqing Gao, Gecheng Chen, Jiaxin Yu, Bocun He, Lingjian Ye',
     title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing',
     venue: 'IEEE Transactions on Automation Science and Engineering', venueLabel: 'IEEE TASE', year: 2026,
     venueNote: '国际智能控制与自动化领域顶刊，SCI二区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/11391543/',
+    wechatUrl: 'https://mp.weixin.qq.com/s/BXffZAkmrBxcFgC_6kwtdA',
+    image: { src: 'papers/sdda-2026.webp', thumbnail: 'papers/sdda-2026-thumb.webp', alt: 'SDDA 逐步引入目标域样本并迭代修正伪标签的自修改过程', caption: '图 3 · SDDA 迭代自修改过程', width: 2106, height: 1062 },
   },
   {
     authors: 'Zeyu Yang, Longying Mao, Lingjian Ye, Yiran Ma, Zhihuan Song, Zhichao Chen',
     title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov-Arnold Network for Industrial Soft Sensors',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2025,
     venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/10925436/',
+    image: { src: 'papers/akgnn-2025.webp', thumbnail: 'papers/akgnn-2025-thumb.webp', alt: 'AKGNN 的总体模型、图构建、消息传递和 KAN 标签预测模块', caption: '图 1 · AKGNN 模型架构', width: 1046, height: 974 },
   },
   {
     authors: 'Zeyu Yang, Tingting Hu, Le Yao, Lingjian Ye, Yi Qiu, Shuxin Du',
     title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2024,
     venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/10663500/',
+    image: { src: 'papers/sdgae-2024.webp', thumbnail: 'papers/sdgae-2024-thumb.webp', alt: 'SSDGAE 的数据预处理、堆叠双引导自编码器离线建模和在线预测架构', caption: '图 3 · SSDGAE 结构', width: 1882, height: 1192 },
   },
   {
     authors: 'Zeyu Yang, Le Yao, Bingbing Shen, Peiliang Wang',
     title: 'Probabilistic Fusion Model for Industrial Soft Sensing Based on Quality-Relevant Feature Clustering',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2023,
     venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/9964255/',
+    image: { src: 'papers/fusion-2023.webp', thumbnail: 'papers/fusion-2023-thumb.webp', alt: '基于质量相关特征聚类的 QRFC 软测量离线建模与在线预测流程', caption: '图 1 · QRFC 软测量流程', width: 1038, height: 994 },
   },
   {
     authors: 'Zeyu Yang, Junhua Zheng, Zhiqiang Ge',
     title: 'Lifelong Bayesian Learning Machines for Streaming Industrial Big Data',
     venue: 'IEEE Transactions on Systems, Man, and Cybernetics: Systems', venueLabel: 'IEEE TSMC', year: 2023,
     venueNote: '国际人工智能领域顶刊，SCI一区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/9874385/',
+    image: { src: 'papers/lifelong-2023.webp', thumbnail: 'papers/lifelong-2023-thumb.webp', alt: '终身贝叶斯学习机器 LBLM 的流式数据知识挖掘、模型扩展和模型优化框架', caption: '图 2 · LBLM 框架', width: 1436, height: 834 },
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'On Paradigm of Industrial Big Data Analytics: From Evolution to Revolution',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2022,
     venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/9827608/',
+    image: { src: 'papers/paradigm-2022.webp', thumbnail: 'papers/paradigm-2022-thumb.webp', alt: '工业大数据分析从孤立学习到终身学习的范式演进及应用场景', caption: '图 5 · 工业大数据分析范式演进', width: 1406, height: 1218 },
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'Rethinking the Value of Just-In-Time Learning in the Era of Industrial Big Data',
     venue: 'IEEE Transactions on Industrial Informatics', venueLabel: 'IEEE TII', year: 2022,
     venueNote: '国际工业信息领域顶刊，SCI一区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/9405485/',
+    image: { src: 'papers/jit-2022.webp', thumbnail: 'papers/jit-2022-thumb.webp', alt: '并行即时学习 P-JITL 中的模型库管理、并行搜索、并行建模和数据库管理框架', caption: '图 2 · P-JITL 框架', width: 1604, height: 1424 },
   },
   {
     authors: 'Zeyu Yang, Zhiqiang Ge',
     title: 'Industrial Virtual Sensing for Big Process Data based on Parallelized Nonlinear Variational Bayesian Factor Regression',
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2020,
     venueNote: '国际仪器和测量领域顶刊，SCI二区TOP期刊',
+    url: 'https://ieeexplore.ieee.org/document/9091189/',
+    image: { src: 'papers/vbf-2020.webp', thumbnail: 'papers/vbf-2020-thumb.webp', alt: '并行非线性变分贝叶斯因子回归 P-NVBFR 的节点并行和线程并行计算流程', caption: '图 2 · 并行 NVBFR 流程', width: 1024, height: 1430 },
   },
 ];
 
