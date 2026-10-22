@@ -112,7 +112,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
                       aria-haspopup="dialog"
                     >
                       <img class="paper-image" src={asset(paper.image.thumbnail || paper.image.src)} alt={paper.image.alt} width={paper.image.width} height={paper.image.height} loading="lazy" decoding="async" />
-                      <span class="figure-hint" lang="zh-CN"><span class="hover-hint">悬停 2 秒或</span>点击查看大图 <span aria-hidden="true">↗</span></span>
+                      <span class="figure-hint" lang="zh-CN">点击查看大图 <span aria-hidden="true">↗</span></span>
                     </a>
                   ) : (
                     <div class="paper-placeholder" lang="zh-CN">
@@ -186,13 +186,12 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         <div><h2 id="figure-title"></h2><p id="figure-paper-title" lang="en"></p></div>
         <button class="lightbox-close" type="button" aria-label="关闭图片" autofocus>×</button>
       </header>
-      <div class="figure-stage" tabindex="0" aria-label="论文图示，放大后可滚动查看细节">
-        <img class="lightbox-image" alt="" decoding="async" />
+      <div class="figure-stage" tabindex="0" aria-label="论文图示，放大后可拖动图片或滚动查看细节">
+        <img class="lightbox-image" alt="" decoding="async" draggable="false" />
       </div>
       <footer class="lightbox-footer">
         <button class="figure-zoom" type="button" aria-pressed="false">放大细节</button>
         <a class="figure-original" target="_blank" rel="noopener noreferrer">打开原图 <span aria-hidden="true">↗</span></a>
-        <span class="lightbox-help">右上角 × 关闭</span>
       </footer>
     </dialog>
 
@@ -204,27 +203,26 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       const paperTitle = lightbox.querySelector<HTMLElement>('#figure-paper-title')!;
       const zoom = lightbox.querySelector<HTMLButtonElement>('.figure-zoom')!;
       const original = lightbox.querySelector<HTMLAnchorElement>('.figure-original')!;
-      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-      let hoverTimer: ReturnType<typeof setTimeout> | undefined;
       let returnFocus: HTMLElement | null = null;
-      let activeTrigger: HTMLAnchorElement | null = null;
-      let dismissedTrigger: HTMLAnchorElement | null = null;
+      let drag: { pointerId: number; x: number; y: number; left: number; top: number } | null = null;
+      let backdropPressed = false;
 
-      const cancelHover = () => {
-        clearTimeout(hoverTimer);
-        hoverTimer = undefined;
+      const stopDragging = () => {
+        const pointerId = drag?.pointerId;
+        drag = null;
+        stage.classList.remove('is-dragging');
+        if (pointerId !== undefined && stage.hasPointerCapture(pointerId)) stage.releasePointerCapture(pointerId);
       };
       const resetZoom = () => {
+        stopDragging();
         stage.classList.remove('is-zoomed');
         zoom.textContent = '放大细节';
         zoom.setAttribute('aria-pressed', 'false');
         stage.scrollTo(0, 0);
       };
-      const openFigure = (trigger: HTMLAnchorElement, fromHover = false) => {
-        cancelHover();
+      const openFigure = (trigger: HTMLAnchorElement) => {
         if (lightbox.open) return;
-        activeTrigger = trigger;
-        returnFocus = fromHover ? document.activeElement as HTMLElement : trigger;
+        returnFocus = trigger;
         const thumbnail = trigger.querySelector<HTMLImageElement>('img')!;
         image.src = trigger.dataset.figureSrc!;
         image.alt = thumbnail.alt;
@@ -236,18 +234,6 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       };
 
       document.querySelectorAll<HTMLAnchorElement>('.paper-image-trigger').forEach((trigger) => {
-        trigger.addEventListener('pointerenter', (event) => {
-          cancelHover();
-          if (!finePointer.matches || event.pointerType === 'touch' || lightbox.open || dismissedTrigger === trigger) return;
-          hoverTimer = setTimeout(() => {
-            if (trigger.matches(':hover')) openFigure(trigger, true);
-          }, 2000);
-        });
-        trigger.addEventListener('pointerleave', () => {
-          cancelHover();
-          if (dismissedTrigger === trigger) dismissedTrigger = null;
-        });
-        trigger.addEventListener('pointerdown', cancelHover);
         trigger.addEventListener('click', (event) => {
           if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
@@ -255,32 +241,55 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
         });
       });
       zoom.addEventListener('click', () => {
+        stopDragging();
         const expanded = stage.classList.toggle('is-zoomed');
         zoom.textContent = expanded ? '适应窗口' : '放大细节';
         zoom.setAttribute('aria-pressed', String(expanded));
         stage.scrollTo(expanded ? (stage.scrollWidth - stage.clientWidth) / 2 : 0, 0);
       });
-      const closeFigure = () => {
-        dismissedTrigger = activeTrigger;
-        lightbox.close();
-      };
-      lightbox.querySelector('.lightbox-close')!.addEventListener('click', closeFigure);
-      lightbox.addEventListener('click', (event) => {
-        if (event.target !== lightbox) return;
-        const bounds = lightbox.getBoundingClientRect();
-        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeFigure();
+      stage.addEventListener('pointerdown', (event) => {
+        if (!stage.classList.contains('is-zoomed') || !event.isPrimary || event.button !== 0 || drag) return;
+        const bounds = stage.getBoundingClientRect();
+        // Keep the native scrollbars usable as an alternative to dragging.
+        if (event.clientX >= bounds.left + stage.clientWidth || event.clientY >= bounds.top + stage.clientHeight) return;
+        event.preventDefault();
+        stage.focus({ preventScroll: true });
+        drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: stage.scrollLeft, top: stage.scrollTop };
+        stage.setPointerCapture(event.pointerId);
+        stage.classList.add('is-dragging');
       });
-      lightbox.addEventListener('cancel', () => { dismissedTrigger = activeTrigger; });
+      stage.addEventListener('pointermove', (event) => {
+        if (!drag || event.pointerId !== drag.pointerId) return;
+        stage.scrollLeft = drag.left - (event.clientX - drag.x);
+        stage.scrollTop = drag.top - (event.clientY - drag.y);
+      });
+      const finishDragging = (event: PointerEvent) => {
+        if (event.pointerId === drag?.pointerId) stopDragging();
+      };
+      window.addEventListener('pointerup', finishDragging);
+      window.addEventListener('pointercancel', finishDragging);
+      stage.addEventListener('lostpointercapture', finishDragging);
+      const closeFigure = () => lightbox.close();
+      lightbox.querySelector('.lightbox-close')!.addEventListener('click', closeFigure);
+      const outsideImageViewer = (event: MouseEvent) => {
+        const bounds = lightbox.getBoundingClientRect();
+        return event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+      };
+      lightbox.addEventListener('pointerdown', (event) => {
+        backdropPressed = event.target === lightbox && outsideImageViewer(event);
+      });
+      lightbox.addEventListener('click', (event) => {
+        if (backdropPressed && event.target === lightbox && outsideImageViewer(event)) closeFigure();
+        backdropPressed = false;
+      });
       lightbox.addEventListener('close', () => {
-        cancelHover();
+        backdropPressed = false;
         resetZoom();
         image.removeAttribute('src');
         returnFocus?.focus({ preventScroll: true });
       });
-      window.addEventListener('scroll', cancelHover, { passive: true });
-      window.addEventListener('blur', cancelHover);
-      document.addEventListener('visibilitychange', cancelHover);
-      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') cancelHover(); });
+      window.addEventListener('blur', stopDragging);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stopDragging(); });
     </script>
   </body>
 </html>
