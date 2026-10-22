@@ -266,7 +266,7 @@ export const academicExchanges: AcademicExchange[] = [
   { date: '2024-05', students: ['贾瑞柠', '胡婷婷'], conference: '第十三届数据驱动控制与学习系统会议（DDCLS’24）', location: '河南开封' },
   { date: '2025-05', students: ['茅珑瀛', '高文情', '倪心茹'], conference: '第十四届数据驱动控制与学习系统会议（DDCLS’25）', location: '江苏无锡' },
   { date: '2025-07', students: ['茅珑瀛'], conference: '第四十四届中国控制会议（CCC 2025）', location: '重庆' },
-  { date: '2025-09', students: ['陈嘉辉', '刘杨美'], conference: '第九届计算机科学与智能控制国际会议（ISCSIC 2025）', location: '杭州' },
+  { date: '2025-09', students: ['陈嘉辉', '刘杨美'], conference: '第九届计算机科学与智能控制国际会议（ISCSIC 2025）', location: '浙江杭州' },
   { date: '2025-11', students: ['倪心茹'], conference: '2025 中国工业计算机大会（ICCC 2025）', location: '云南昆明' },
   { date: '2026-05', students: ['倪心茹', '戚鸿斐'], conference: '第十五届数据驱动控制与学习系统会议（DDCLS’26）', location: '湖南吉首' },
   { date: '2026-08', students: ['茅珑瀛'], conference: '第 23 届国际自动控制联合会世界大会（IFAC World Congress 2026）', location: '韩国釜山' },
