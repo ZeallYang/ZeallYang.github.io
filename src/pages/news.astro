@@ -1,11 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import { profile, groupName, researchAchievements, academicExchanges } from '../data/profile';
+
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+const newestFirst = <T extends { date: string }>(entries: T[]) => [...entries].sort((a, b) => b.date.localeCompare(a.date));
+const achievements = newestFirst(researchAchievements);
+const exchanges = newestFirst(academicExchanges);
+---
+
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <title>课题组动态</title>
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>课题组动态｜{groupName}</title>
+    <meta name="description" content={`${groupName}的成果喜报与学术交流，记录同学们的论文成果和学术会议交流。`} />
+    <meta name="theme-color" content="#f8f7f3" />
+    <link rel="icon" type="image/svg+xml" href={asset('favicon.svg')} />
+    {Astro.site && <link rel="canonical" href={new URL(asset('news/'), Astro.site)} />}
   </head>
-  <body></body>
+  <body id="top">
+    <a class="skip-link" href="#main">跳转至主要内容</a>
+    <SiteHeader />
+    <main id="main" class="news-page" tabindex="-1">
+      <nav class="breadcrumb" aria-label="当前位置"><a href={asset('')}>主页</a><span aria-hidden="true">/</span><span aria-current="page">课题组动态</span></nav>
+      <header class="news-intro">
+        <p class="eyebrow" lang="en">Group News</p>
+        <h1>课题组动态<span class="heading-dot" aria-hidden="true">.</span></h1>
+        <p>记录科研成果，分享学术交流。</p>
+      </header>
+      <nav class="news-nav" aria-label="动态分类">
+        <a href="#achievements"><span>成果喜报</span><span class="news-nav-count">{achievements.length}</span><span aria-hidden="true">↘</span></a>
+        <a href="#exchanges"><span>学术交流</span><span class="news-nav-count">{exchanges.length}</span><span aria-hidden="true">↘</span></a>
+      </nav>
+
+      <section id="achievements" class="news-section achievements-section" aria-labelledby="achievements-heading">
+        <header class="news-section-heading">
+          <div><p class="eyebrow" lang="en">Research Highlights</p><h2 id="achievements-heading">成果喜报</h2></div>
+          <span>{achievements.length} 项成果</span>
+        </header>
+        <ol class="news-list">
+          {achievements.map((item) => (
+            <li class="news-entry">
+              <time datetime={item.date}>{item.date.replace('-', '.')}</time>
+              <article class="news-entry-content">
+                <p class="achievement-byline"><strong>{item.student}<span>同学</span></strong><span class="achievement-venue" lang="en">{item.venue}</span></p>
+                <h3 class="achievement-title" lang="en">{item.title}</h3>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="exchanges" class="news-section" aria-labelledby="exchanges-heading">
+        <header class="news-section-heading">
+          <div><p class="eyebrow" lang="en">Academic Exchange</p><h2 id="exchanges-heading">学术交流</h2></div>
+          <span>{exchanges.length} 条记录</span>
+        </header>
+        <ol class="news-list">
+          {exchanges.map((item) => (
+            <li class="news-entry">
+              <time datetime={item.date}>{item.date.replace('-', '.')}</time>
+              <article class="news-entry-content">
+                <h3 class="exchange-title">{item.conference}</h3>
+                <div class="exchange-meta"><p>课题组 <strong>{item.students.join('、')}</strong> 同学参加</p><p class="exchange-location">地点：{item.location}</p></div>
+                {item.photos && item.photos.length > 0 && <div class="exchange-gallery">
+                  {item.photos.map((photo) => <figure>
+                    <Image src={photo.src} alt={photo.alt} widths={[480, 800, 1200]} sizes="(max-width: 540px) calc(100vw - 44px), (max-width: 900px) calc(100vw - 60px), 760px" format="webp" quality={85} loading="lazy" decoding="async" />
+                    {photo.caption && <figcaption>{photo.caption}</figcaption>}
+                  </figure>)}
+                </div>}
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <footer class="footer"><span>{profile.name} <span aria-hidden="true">/</span> <span lang="en">{profile.englishName}</span></span><a href="#top">返回页首 <span aria-hidden="true">↑</span></a></footer>
+    </main>
+  </body>
 </html>

@@ -137,6 +137,32 @@ Zeyu Yang, Zhiqiang Ge, Industrial Virtual Sensing for Big Process Data based on
 
 ## 用户后续补充
 
+### 2026-10-22 课题组动态
+
+页面分为成果喜报与学术交流，各自按年月倒序展示；同月记录保持用户给出的顺序。学术交流照片后续补充，当前不显示占位图片。以下记录仅来自用户本次提供的信息。
+
+成果喜报：
+
+- 胡婷婷，2024.09，IEEE TIM，Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing
+- 茅珑瀛，2025.03，IEEE TIM，AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors
+- 茅珑瀛，2025.12，IEEE Sensors Journal，Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing
+- 高文情，2026.02，IEEE TASE，Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing
+- 陈嘉辉，2026.08，CEP，CLARI: Constrained reflective LLM inference for few-shot soft sensing under operating-condition drift
+
+学术交流：
+
+- 2023.05，课题组贾瑞柠、胡婷婷同学参加第十二届数据驱动控制与学习系统会议（DDCLS’23），湖南湘潭
+- 2024.05，课题组贾瑞柠、胡婷婷同学参加第十三届数据驱动控制与学习系统会议（DDCLS’24），河南开封
+- 2025.05，课题组茅珑瀛、高文情、倪心茹同学参加第十四届数据驱动控制与学习系统会议（DDCLS’25），江苏无锡
+- 2025.07，课题组茅珑瀛同学参加第四十四届中国控制会议（CCC 2025），重庆
+- 2025.09，课题组陈嘉辉、刘杨美同学参加第九届计算机科学与智能控制国际会议（ISCSIC 2025），杭州
+- 2025.11，课题组倪心茹同学参加 2025 中国工业计算机大会（ICCC 2025），云南昆明
+- 2026.05，课题组倪心茹、戚鸿斐同学参加第十五届数据驱动控制与学习系统会议（DDCLS’26），湖南吉首
+- 2026.08，课题组茅珑瀛同学参加第 23 届国际自动控制联合会世界大会（IFAC World Congress 2026），韩国釜山
+- 2026.05，课题组王鑫同学参加第41届中国自动化学会青年学术年会（YAC 2026），湖南长沙
+
+### 此前补充
+
 2026-10-22：用户提供“代表性论文”目录中的 10 篇 PDF，用于提取各篇框架图或代表性图示。原始 PDF 仅保留本地，网页使用独立导出的 WebP 缩略图和高清图；图号、PDF 页码与导出记录保存在本地维护资料中。论文标题链接到对应的 ScienceDirect、IEEE Xplore 或 IEEE/CAA JAS 正式页面。
 
 用户提供的微信公众号解读链接：

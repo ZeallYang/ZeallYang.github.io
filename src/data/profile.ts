@@ -1,5 +1,6 @@
 // 学术资料按最新版《2026-个人信息-杨泽宇（机智学院官网）》更新，正文转录于 PROFILE_CONTENT.md。
 import portrait from '../assets/portrait.jpg';
+import type { ImageMetadata } from 'astro';
 
 type ResearchInterest = { title: string; topics?: string[] };
 
@@ -62,7 +63,7 @@ export const showTopNavigation = true;
 // 暂用描述性名称；确定正式课题组名称后只需修改此处。
 export const groupName = '工业智能感知与自主学习课题组';
 
-// 顶部只导航到独立页面；页面内容尚待设计，不在这里重复主页章节。
+// 顶部只导航到独立页面，不在这里重复主页章节。
 export const navigation: NavigationItem[] = [
   { label: '课题组动态', href: '/news/' },
   { label: '学生培养', href: '/members/', highlight: true },
@@ -239,4 +240,35 @@ export const graduateStudents: GraduateCohort[] = [
   ] },
   { year: 2022, students: [{ name: '胡婷婷', note: '深圳佰维存储科技股份有限公司，SIPI仿真工程师' }] },
   { year: 2021, students: [{ name: '贾瑞柠', note: '中国建设银行股份有限公司武安支行，二级业务员' }] },
+];
+
+type ResearchAchievement = { date: string; student: string; venue: string; title: string };
+type AcademicExchange = {
+  date: string;
+  students: string[];
+  conference: string;
+  location: string;
+  // 补充真实照片时，从 src/assets/news/ 导入图片后填写；无照片时不显示图片区。
+  photos?: { src: ImageMetadata; alt: string; caption?: string }[];
+};
+
+// 日期统一填写 YYYY-MM；页面自动倒序排列，同月条目保留录入顺序。
+export const researchAchievements: ResearchAchievement[] = [
+  { date: '2024-09', student: '胡婷婷', venue: 'IEEE TIM', title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing' },
+  { date: '2025-03', student: '茅珑瀛', venue: 'IEEE TIM', title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors' },
+  { date: '2025-12', student: '茅珑瀛', venue: 'IEEE Sensors Journal', title: 'Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing' },
+  { date: '2026-02', student: '高文情', venue: 'IEEE TASE', title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing' },
+  { date: '2026-08', student: '陈嘉辉', venue: 'CEP', title: 'CLARI: Constrained reflective LLM inference for few-shot soft sensing under operating-condition drift' },
+];
+
+export const academicExchanges: AcademicExchange[] = [
+  { date: '2023-05', students: ['贾瑞柠', '胡婷婷'], conference: '第十二届数据驱动控制与学习系统会议（DDCLS’23）', location: '湖南湘潭' },
+  { date: '2024-05', students: ['贾瑞柠', '胡婷婷'], conference: '第十三届数据驱动控制与学习系统会议（DDCLS’24）', location: '河南开封' },
+  { date: '2025-05', students: ['茅珑瀛', '高文情', '倪心茹'], conference: '第十四届数据驱动控制与学习系统会议（DDCLS’25）', location: '江苏无锡' },
+  { date: '2025-07', students: ['茅珑瀛'], conference: '第四十四届中国控制会议（CCC 2025）', location: '重庆' },
+  { date: '2025-09', students: ['陈嘉辉', '刘杨美'], conference: '第九届计算机科学与智能控制国际会议（ISCSIC 2025）', location: '杭州' },
+  { date: '2025-11', students: ['倪心茹'], conference: '2025 中国工业计算机大会（ICCC 2025）', location: '云南昆明' },
+  { date: '2026-05', students: ['倪心茹', '戚鸿斐'], conference: '第十五届数据驱动控制与学习系统会议（DDCLS’26）', location: '湖南吉首' },
+  { date: '2026-08', students: ['茅珑瀛'], conference: '第 23 届国际自动控制联合会世界大会（IFAC World Congress 2026）', location: '韩国釜山' },
+  { date: '2026-05', students: ['王鑫'], conference: '第41届中国自动化学会青年学术年会（YAC 2026）', location: '湖南长沙' },
 ];
