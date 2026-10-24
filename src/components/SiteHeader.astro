@@ -13,7 +13,7 @@ const isCurrentPage = (href: string) => navigationHref(href).replace(/\/+$/, '')
       {showTopNavigation && <nav class="top-nav" aria-label="网站导航">
         {navigation.map((item) => 'children' in item ? (
           <details class="nav-dropdown" name="site-navigation">
-            <summary>{item.label}<span class="dropdown-chevron" aria-hidden="true"></span></summary>
+            <summary><span class="nav-label">{item.label}</span><span class="dropdown-chevron" aria-hidden="true"></span></summary>
             <div class="dropdown-panel">
               {item.children.map((link) => (
                 <a href={navigationHref(link.href)}><span>{link.label}</span>{link.description && <small lang="en">{link.description}</small>}</a>
