@@ -113,7 +113,9 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
                       aria-haspopup="dialog"
                     >
                       <img class="paper-image" src={asset(paper.image.thumbnail || paper.image.src)} alt={paper.image.alt} width={paper.image.width} height={paper.image.height} loading="lazy" decoding="async" />
-                      <span class="figure-hint" lang="zh-CN">点击查看大图 <span aria-hidden="true">↗</span></span>
+                      <span class="figure-hint" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 4.5 4.5" /></svg>
+                      </span>
                     </a>
                   ) : (
                     <div class="paper-placeholder" lang="zh-CN">
