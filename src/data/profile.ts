@@ -211,7 +211,7 @@ export const services = [
   '浙江省自动化学会青年工作委员会副主任委员',
   '浙江省自动化学会专家库成员',
   '湖州师范大学青年科学技术协会副会长',
-  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE SENSORS J、IEEE IOTJ、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、FUEL、NEUCOM、JPC、CCE、CES、Measurement、IECR 等国外权威 SCI 期刊审稿人',
+  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE IOTJ、IEEE SENS. J、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、Fuel、Neurocomputing、CEP、JPC、CCE、CES、Measurement、CILS、IECR 等国外权威 SCI 期刊审稿人',
 ];
 
 export const organizedWorkshops = [
