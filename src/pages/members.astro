@@ -24,7 +24,7 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
       <nav class="breadcrumb" aria-label="当前位置"><a href={asset('')}>主页</a><span aria-hidden="true">/</span><span aria-current="page">学生培养</span></nav>
       <header class="members-intro">
         <p class="eyebrow" lang="en">Student Mentoring</p>
-        <h1>学生培养<span class="heading-dot" aria-hidden="true">.</span></h1>
+        <h1>学生培养</h1>
         <p>硕士研究生 <span aria-hidden="true">·</span> {graduateStudents.length} 个年级 <span aria-hidden="true">·</span> {studentCount} 位同学</p>
       </header>
       <nav class="cohort-nav" aria-label="按年级浏览">{graduateStudents.map((cohort) => <a href={`#cohort-${cohort.year}`}>{cohort.year} 级</a>)}</nav>

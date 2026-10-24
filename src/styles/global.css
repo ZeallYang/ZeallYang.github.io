@@ -103,7 +103,6 @@ main { min-width: 0; }
 main > section + section { margin-top: 52px; }
 .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
 .intro-heading { font: 600 34px/1.5 var(--serif); letter-spacing: .06em; margin: 5px 0 22px; }
-.heading-dot { color: var(--accent); margin-left: 4px; }
 .biography { line-height: 1.95; }
 .biography p + p { margin-top: 14px; }
 .biography p:first-child { font-weight: 500; }

@@ -63,7 +63,7 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
       <main id="main" tabindex="-1">
         <section id="about" aria-labelledby="about-heading" class="about-section">
           <p class="eyebrow" lang="en">About Me</p>
-          <h2 id="about-heading" class="intro-heading">个人简介<span class="heading-dot" aria-hidden="true">.</span></h2>
+          <h2 id="about-heading" class="intro-heading">个人简介</h2>
           <div class="biography">{profile.biography.map((paragraph) => <p>{paragraph.split(biographyPattern).map((part) => profile.biographyHighlights.includes(part) ? <strong>{part}</strong> : part)}</p>)}</div>
           <a class="recruit-shortcut" href="#contact"><span class="small-mark" aria-hidden="true">↗</span><span>欢迎对工业大数据与 AI 研究感兴趣的同学加入课题组</span><span class="shortcut-label">了解更多 <span aria-hidden="true">→</span></span></a>
         </section>
