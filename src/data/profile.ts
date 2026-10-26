@@ -18,7 +18,7 @@ export const profile = {
     '杨泽宇，男，1992 年生，浙江湖州人，博士、副教授、硕士生导师。',
     '2021 年获浙江大学控制科学与工程专业博士学位，2019—2020 年赴德国杜伊斯堡-埃森大学自动控制及复杂系统研究所联合培养。2021—2023 年在湖州师范大学任讲师，2023 年起任副教授。入选浙江省青年人才托举项目（校内首位），并为全省工业大数据分析与应用研究领域首位入选者；获浙江省青年科技工作者优秀论文等荣誉。',
     '长期致力于工业人工智能、工业大数据分析与应用、工业大模型与智能体等领域研究。近年来主持国家自然科学基金青年项目 1 项、浙江省自然科学基金 2 项（青年项目和面上项目）、湖州市自然科学基金 2 项、全国重点实验室开放课题 3 项；作为核心成员参与多项国家自然科学基金重点项目、国家重点研发计划课题与国家自然科学基金面上项目。',
-    '已累计发表学术论文 80 余篇（第一/通讯作者 40 余篇），包括领域内权威期刊如 IEEE 汇刊（IEEE TSMC、IEEE TIE、IEEE TII、IEEE TASE、IEEE TIM 等）、IFAC 会刊（EAAI、CEP、JPC 等）以及 IEEE/CAA JAS、IEEE IoTJ等，其中 2 篇入选 ESI 高被引论文；相关研究成果应用于化工过程、旋转设备、离散制造等复杂工业系统，申请和授权国家发明专利 10 余项。',
+    '已累计发表学术论文 80 余篇（第一/通讯作者 40 余篇），包括领域内权威期刊如 IEEE 汇刊（IEEE TSMC、TIE、TII、TASE、TIM 等）、IFAC 会刊（EAAI、CEP、JPC 等）以及 IEEE/CAA JAS、IEEE IoTJ等，其中 2 篇入选 ESI 高被引论文；相关研究成果应用于化工过程、旋转设备、离散制造等复杂工业系统，申请和授权国家发明专利 10 余项。',
   ],
   // 控制简介中需要强调的原文片段，不改变正文内容。
   biographyHighlights: [
@@ -37,7 +37,7 @@ export const profile = {
     { title: '工业大数据分析与应用' },
     { title: '工业大模型与智能体' },
   ] as ResearchInterest[],
-  recruiting: '欢迎自驱力强、对工业人工智能与工业大数据研究感兴趣的同学加入本课题组，一起探索在智能制造场景中的前沿算法设计与工业应用（有意愿者可推荐继续攻读博士）。',
+  recruiting: '欢迎自驱力强、对工业人工智能与工业大数据研究感兴趣的同学加入本课题组，一起探索在智能制造场景中的前沿算法设计与工业应用（有意愿者可推荐继续攻读博士）',
 };
 
 // 仅在获得本人确认的真实地址后添加，如 { label: 'Google Scholar', url: '…' }。
@@ -211,7 +211,7 @@ export const services = [
   '浙江省自动化学会青年工作委员会副主任委员',
   '浙江省自动化学会专家库成员',
   '湖州师范大学青年科学技术协会副会长',
-  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE IOTJ、IEEE SENS. J、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、Fuel、Neurocomputing、CEP、JPC、CCE、CES、Measurement、CILS、IECR 等国外权威 SCI 期刊审稿人',
+  '长期担任 IEEE TII、IEEE TNNLS、IEEE TIE、IEEE TIM、IEEE TASE、IEEE IOTJ、IEEE SENS. J、KBS、EAAI、CAIE、JMS、AEI、ASOC、NODY、CEP、JPC、CCE、CES等国外权威 SCI 期刊审稿人',
 ];
 
 export const organizedWorkshops = [
