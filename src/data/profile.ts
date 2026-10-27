@@ -159,7 +159,7 @@ export const publications: Publication[] = [
     authors: 'Zeyu Yang, Junhua Zheng, Zhiqiang Ge',
     title: 'Lifelong Bayesian Learning Machines for Streaming Industrial Big Data',
     venue: 'IEEE Transactions on Systems, Man, and Cybernetics: Systems', venueLabel: 'IEEE TSMC', year: 2023,
-    venueNote: '人工智能领域国际顶刊，SCI一区TOP期刊',
+    venueNote: '自动化与控制领域国际顶刊，SCI一区TOP期刊',
     url: 'https://ieeexplore.ieee.org/document/9874385/',
     image: { src: 'papers/lifelong-2023.webp', thumbnail: 'papers/lifelong-2023-thumb.webp', alt: '终身贝叶斯学习机器 LBLM 的流式数据知识挖掘、模型扩展和模型优化框架', caption: '图 2 · LBLM 框架', width: 1436, height: 834 },
   },
