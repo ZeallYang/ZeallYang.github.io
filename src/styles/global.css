@@ -194,7 +194,7 @@ body:has(.paper-lightbox[open]) { overflow: hidden; }
 .workshop-list h3 { color: var(--accent); font-size: 16px; font-weight: 600; }
 .workshop-list p { margin-top: 4px; }
 .workshop-list p[lang] { color: var(--muted); font-size: 15px; overflow-wrap: anywhere; }
-main > .contact-section { padding: 30px 32px 20px; }
+main > .contact-section { background: var(--tint); border-top: 2px solid var(--accent); padding: 30px 32px 20px; }
 .contact-section h2 { font: 600 27px/1.6 var(--serif); margin: 8px 0 15px; }
 .contact-section > p:not(.eyebrow) { font-size: 16px; line-height: 2; }
 .contact-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 25px; border-top: 1px solid var(--line); }
