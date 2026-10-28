@@ -171,15 +171,61 @@ const biographyPattern = new RegExp(`(${profile.biographyHighlights.map((phrase)
           <h2 id="contact-heading">一起探索工业智能的前沿</h2>
           <p>{profile.recruiting}</p>
           <div class="contact-actions">
-            <a class="contact-button" href={mailto}>邮件联系 <span lang="en">{profile.email}</span><span aria-hidden="true">↗</span></a>
-            <a class="contact-button" href={asset('members/')}>学生培养 <span aria-hidden="true">→</span></a>
-            <a class="contact-button" href={asset('news/')}>课题组动态 <span aria-hidden="true">→</span></a>
+            <a class="contact-button contact-mail" href={mailto} data-email={profile.email} aria-label="邮件联系：复制邮箱并打开邮件应用" aria-describedby="contact-email">
+              <span class="contact-label">邮件联系 <svg class="contact-arrow" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></span>
+              <span id="contact-email" class="contact-email" lang="en">{profile.email}</span>
+            </a>
+            <a class="contact-button" href={asset('members/')}><span class="contact-label">学生培养 <svg class="contact-arrow" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></span></a>
+            <a class="contact-button" href={asset('news/')}><span class="contact-label">课题组动态 <svg class="contact-arrow" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></span></a>
           </div>
         </section>
 
         <footer class="footer"><span>{profile.name} <span aria-hidden="true">/</span> <span lang="en">{profile.englishName}</span></span><a href="#top">返回页首 <span aria-hidden="true">↑</span></a></footer>
       </main>
     </div>
+
+    <output class="contact-toast" role="status" aria-live="polite" aria-atomic="true"></output>
+    <script>
+      const contactMail = document.querySelector<HTMLAnchorElement>('.contact-mail')!;
+      const contactToast = document.querySelector<HTMLOutputElement>('.contact-toast')!;
+      let toastTimer: ReturnType<typeof setTimeout>;
+
+      const copyEmail = async (email: string) => {
+        try {
+          await navigator.clipboard.writeText(email);
+          return true;
+        } catch {
+          // Older browsers may still support copying a selected text field.
+          const previousFocus = document.activeElement as HTMLElement | null;
+          const input = document.createElement('textarea');
+          input.value = email;
+          input.readOnly = true;
+          input.style.cssText = 'position:fixed;left:-9999px;top:0';
+          document.body.append(input);
+          input.select();
+          let copied = false;
+          try { copied = document.execCommand('copy'); } catch { /* Show the real outcome below. */ }
+          input.remove();
+          previousFocus?.focus({ preventScroll: true });
+          return copied;
+        }
+      };
+
+      contactMail.addEventListener('click', async (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const copied = await copyEmail(contactMail.dataset.email!);
+        clearTimeout(toastTimer);
+        contactToast.textContent = copied ? '已复制邮箱' : '复制未成功，请手动复制邮箱';
+        contactToast.classList.add('is-visible');
+        contactMail.classList.toggle('is-email-visible', !copied);
+        toastTimer = setTimeout(() => {
+          contactToast.classList.remove('is-visible');
+          contactToast.textContent = '';
+        }, 2600);
+        window.open(contactMail.href, '_self');
+      });
+    </script>
 
     <dialog class="paper-lightbox" aria-labelledby="figure-title" aria-describedby="figure-paper-title">
       <header class="lightbox-header">
