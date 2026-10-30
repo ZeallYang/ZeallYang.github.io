@@ -137,6 +137,7 @@ export const publications: Publication[] = [
     venue: 'IEEE Transactions on Instrumentation and Measurement', venueLabel: 'IEEE TIM', year: 2025,
     venueNote: '仪器和测量领域国际顶刊，SCI二区TOP期刊',
     url: 'https://ieeexplore.ieee.org/document/10925436/',
+    wechatUrl: 'https://mp.weixin.qq.com/s/GgNWlpdtXYffqDJs5ykk3Q',
     image: { src: 'papers/akgnn-2025.webp', thumbnail: 'papers/akgnn-2025-thumb.webp', alt: 'AKGNN 的总体模型、图构建、消息传递和 KAN 标签预测模块', caption: '图 1 · AKGNN 模型架构', width: 1046, height: 974 },
   },
   {
