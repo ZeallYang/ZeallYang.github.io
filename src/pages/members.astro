@@ -48,65 +48,35 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
       const nav = page.querySelector<HTMLElement>('.cohort-nav')!;
       const indicator = nav.querySelector<HTMLElement>('.cohort-indicator')!;
       const links = [...nav.querySelectorAll<HTMLAnchorElement>('a')];
-      const cohorts = links.map((link) => document.querySelector<HTMLElement>(link.hash)!);
       let active = links[0];
-      let selectionLocked = false;
-      let scrollFrame = 0;
 
       const moveIndicator = () => {
-        const label = active.querySelector<HTMLElement>('.cohort-nav-label')!.getBoundingClientRect();
+        const item = active.getBoundingClientRect();
         const bounds = nav.getBoundingClientRect();
-        indicator.style.width = `${label.width}px`;
-        indicator.style.transform = `translate(${label.left - bounds.left}px, ${label.bottom - bounds.top + 7}px)`;
+        indicator.style.width = `${item.width}px`;
+        indicator.style.height = `${item.height}px`;
+        indicator.style.transform = `translate(${item.left - bounds.left - nav.clientLeft}px, ${item.top - bounds.top - nav.clientTop}px)`;
       };
       const select = (link: HTMLAnchorElement) => {
         active = link;
         links.forEach((item) => item === link ? item.setAttribute('aria-current', 'location') : item.removeAttribute('aria-current'));
         moveIndicator();
       };
-      const updateFromScroll = () => {
-        scrollFrame = 0;
-        if (selectionLocked) return;
-        const threshold = nav.getBoundingClientRect().bottom + 20;
-        let index = 0;
-        cohorts.forEach((cohort, i) => { if (cohort.getBoundingClientRect().top <= threshold) index = i; });
-        if (scrollY > 0 && scrollY + innerHeight >= document.documentElement.scrollHeight - 2) index = links.length - 1;
-        if (active !== links[index]) select(links[index]);
-      };
-      const scheduleScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateFromScroll); };
       const followHash = () => {
         const link = links.find((item) => item.hash === location.hash);
-        selectionLocked = Boolean(link);
-        if (link) select(link); else scheduleScroll();
+        select(link || links[0]);
       };
       nav.addEventListener('click', (event) => {
         const mouse = event as MouseEvent;
         if (mouse.ctrlKey || mouse.metaKey || mouse.shiftKey || mouse.altKey) return;
         const link = (event.target as Element).closest<HTMLAnchorElement>('a');
         if (!link) return;
-        selectionLocked = true;
         select(link);
       });
-      const releaseSelection = () => { selectionLocked = false; scheduleScroll(); };
-      window.addEventListener('wheel', releaseSelection, { passive: true });
-      window.addEventListener('touchstart', releaseSelection, { passive: true });
-      document.addEventListener('pointerdown', (event) => { if (!nav.contains(event.target as Node)) releaseSelection(); });
-      document.addEventListener('keydown', (event) => {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) releaseSelection();
-      });
-      window.addEventListener('scroll', scheduleScroll, { passive: true });
       window.addEventListener('hashchange', followHash);
       window.addEventListener('pageshow', followHash);
-      const updateLayout = () => {
-        const header = document.querySelector<HTMLElement>('.masthead')!;
-        page.style.setProperty('--cohort-nav-top', `${Math.ceil(header.getBoundingClientRect().height) + 12}px`);
-        page.style.setProperty('--cohort-nav-height', `${Math.ceil(nav.getBoundingClientRect().height)}px`);
-        moveIndicator();
-      };
-      const observer = new ResizeObserver(updateLayout);
+      const observer = new ResizeObserver(moveIndicator);
       observer.observe(nav);
-      observer.observe(document.querySelector('.masthead')!);
-      updateLayout();
       followHash();
       nav.classList.add('is-ready');
     </script>
