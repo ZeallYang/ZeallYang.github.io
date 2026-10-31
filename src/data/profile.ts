@@ -232,7 +232,7 @@ type GraduateCohort = { year: number; students: { name: string; note?: string }[
 
 // 按文档中的年级排列；括号内信息原样保留，不推断学籍或职位。
 export const graduateStudents: GraduateCohort[] = [
-  { year: 2026, students: [{ name: '邵闻起' }, { name: '强锐达' }, { name: '刘俊鑫' }, { name: '邵航' }, { name: '唐雨婷' }] },
+ // { year: 2026, students: [{ name: '邵闻起' }, { name: '强锐达' }, { name: '刘俊鑫' }, { name: '邵航' }, { name: '唐雨婷' }] },
   { year: 2025, students: [{ name: '王鑫' }, { name: '戚鸿斐' }, { name: '邵佳佳' }] },
   { year: 2024, students: [{ name: '陈嘉辉' }, { name: '刘杨美' }, { name: '倪心茹' }] },
   { year: 2023, students: [
