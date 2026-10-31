@@ -27,7 +27,10 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
         <h1>学生培养</h1>
         <p>硕士研究生 <span aria-hidden="true">·</span> {graduateStudents.length} 个年级 <span aria-hidden="true">·</span> {studentCount} 位同学</p>
       </header>
-      <nav class="cohort-nav" aria-label="按年级浏览">{graduateStudents.map((cohort) => <a href={`#cohort-${cohort.year}`}>{cohort.year} 级</a>)}</nav>
+      <nav class="cohort-nav" aria-label="按年级浏览">
+        {graduateStudents.map((cohort, index) => <a href={`#cohort-${cohort.year}`} aria-current={index === 0 ? 'location' : undefined}><span class="cohort-nav-label"><span class="cohort-nav-year">{cohort.year}</span><span class="cohort-nav-suffix">级</span></span></a>)}
+        <span class="cohort-indicator" aria-hidden="true"></span>
+      </nav>
       <div class="cohort-list">
         {graduateStudents.map((cohort) => (
           <section id={`cohort-${cohort.year}`} class="cohort" aria-labelledby={`heading-${cohort.year}`}>
@@ -40,5 +43,72 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
       </div>
       <footer class="footer"><span>{profile.name} <span aria-hidden="true">/</span> <span lang="en">{profile.englishName}</span></span><a href={asset('')}>返回主页 <span aria-hidden="true">→</span></a></footer>
     </main>
+    <script>
+      const page = document.querySelector<HTMLElement>('.members-page')!;
+      const nav = page.querySelector<HTMLElement>('.cohort-nav')!;
+      const indicator = nav.querySelector<HTMLElement>('.cohort-indicator')!;
+      const links = [...nav.querySelectorAll<HTMLAnchorElement>('a')];
+      const cohorts = links.map((link) => document.querySelector<HTMLElement>(link.hash)!);
+      let active = links[0];
+      let selectionLocked = false;
+      let scrollFrame = 0;
+
+      const moveIndicator = () => {
+        const label = active.querySelector<HTMLElement>('.cohort-nav-label')!.getBoundingClientRect();
+        const bounds = nav.getBoundingClientRect();
+        indicator.style.width = `${label.width}px`;
+        indicator.style.transform = `translate(${label.left - bounds.left}px, ${label.bottom - bounds.top + 7}px)`;
+      };
+      const select = (link: HTMLAnchorElement) => {
+        active = link;
+        links.forEach((item) => item === link ? item.setAttribute('aria-current', 'location') : item.removeAttribute('aria-current'));
+        moveIndicator();
+      };
+      const updateFromScroll = () => {
+        scrollFrame = 0;
+        if (selectionLocked) return;
+        const threshold = nav.getBoundingClientRect().bottom + 20;
+        let index = 0;
+        cohorts.forEach((cohort, i) => { if (cohort.getBoundingClientRect().top <= threshold) index = i; });
+        if (scrollY > 0 && scrollY + innerHeight >= document.documentElement.scrollHeight - 2) index = links.length - 1;
+        if (active !== links[index]) select(links[index]);
+      };
+      const scheduleScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateFromScroll); };
+      const followHash = () => {
+        const link = links.find((item) => item.hash === location.hash);
+        selectionLocked = Boolean(link);
+        if (link) select(link); else scheduleScroll();
+      };
+      nav.addEventListener('click', (event) => {
+        const mouse = event as MouseEvent;
+        if (mouse.ctrlKey || mouse.metaKey || mouse.shiftKey || mouse.altKey) return;
+        const link = (event.target as Element).closest<HTMLAnchorElement>('a');
+        if (!link) return;
+        selectionLocked = true;
+        select(link);
+      });
+      const releaseSelection = () => { selectionLocked = false; scheduleScroll(); };
+      window.addEventListener('wheel', releaseSelection, { passive: true });
+      window.addEventListener('touchstart', releaseSelection, { passive: true });
+      document.addEventListener('pointerdown', (event) => { if (!nav.contains(event.target as Node)) releaseSelection(); });
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) releaseSelection();
+      });
+      window.addEventListener('scroll', scheduleScroll, { passive: true });
+      window.addEventListener('hashchange', followHash);
+      window.addEventListener('pageshow', followHash);
+      const updateLayout = () => {
+        const header = document.querySelector<HTMLElement>('.masthead')!;
+        page.style.setProperty('--cohort-nav-top', `${Math.ceil(header.getBoundingClientRect().height) + 12}px`);
+        page.style.setProperty('--cohort-nav-height', `${Math.ceil(nav.getBoundingClientRect().height)}px`);
+        moveIndicator();
+      };
+      const observer = new ResizeObserver(updateLayout);
+      observer.observe(nav);
+      observer.observe(document.querySelector('.masthead')!);
+      updateLayout();
+      followHash();
+      nav.classList.add('is-ready');
+    </script>
   </body>
 </html>
