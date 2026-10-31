@@ -223,16 +223,14 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
 .members-intro h1 { margin: 8px 0 12px; font-size: 36px; letter-spacing: .06em; }
 .members-intro > p:last-child { color: var(--muted); font-size: 15px; }
 .members-intro > p:last-child > span { padding: 0 8px; }
-.cohort-nav { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); width: min(100%, 620px); gap: 4px; padding: 5px; border: 1px solid var(--line); border-radius: 8px; background: var(--tint); }
-.cohort-nav a { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; min-height: 44px; padding: 6px 4px; border-radius: 4px; color: var(--muted); text-decoration: none; transition: color 220ms ease; }
+.cohort-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; padding-bottom: 14px; }
+.cohort-caption { margin-right: 4px; color: var(--muted); font-size: 12px; }
+.cohort-nav a { display: flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; padding: 6px 0; color: var(--muted); text-decoration: none; transition: color 240ms ease; }
 .cohort-nav a:is(:hover, :focus-visible, [aria-current]) { color: var(--accent); }
-.cohort-nav-label { position: relative; display: inline-flex; align-items: baseline; gap: 6px; }
-.cohort-nav-year { font: 500 17px/1.5 var(--sans); font-variant-numeric: tabular-nums; }
-.cohort-nav-suffix { font-size: 12px; }
-.cohort-nav a[aria-current] { background: var(--background); }
-.cohort-nav.is-ready a[aria-current] { background: transparent; }
-.cohort-indicator { position: absolute; top: 0; left: 0; border-radius: 4px; background: var(--background); box-shadow: 0 1px 4px #243d4c10; pointer-events: none; opacity: 0; }
-.cohort-nav.is-ready .cohort-indicator { opacity: 1; transition: transform 300ms cubic-bezier(.22, .61, .36, 1), width 300ms ease, height 300ms ease; }
+.cohort-nav-label { position: relative; display: inline-block; }
+.cohort-nav-year { font: 400 16px/1.6 var(--sans); font-variant-numeric: tabular-nums; }
+.cohort-nav-label::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: center; transition: transform 240ms ease; }
+.cohort-nav a:is([aria-current], :hover, :focus-visible) .cohort-nav-label::after { transform: scaleX(1); }
 .cohort { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 28px; padding: 32px 0; border-bottom: 1px solid var(--line); }
 .cohort-heading h2 { color: var(--accent); font: 28px/1.5 Georgia, serif; }
 .cohort-heading h2 > span { padding-left: 7px; font: 14px var(--sans); }
@@ -335,7 +333,9 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
   .members-intro h1 { font-size: 30px; }
   .members-intro > p:last-child { font-size: 14px; }
   .members-intro > p:last-child > span { padding: 0 3px; }
-  .cohort-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 8px; }
+  .cohort-nav { gap: 0 2px; }
+  .cohort-caption { flex-basis: 100%; margin: 0 0 1px; }
+  .cohort-nav-year { font-size: 15px; }
   .cohort { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 26px 0; }
   .cohort-heading { display: flex; gap: 16px; align-items: baseline; }
   .cohort-heading h2 { font-size: 25px; }
@@ -401,7 +401,7 @@ main > .contact-section { background: var(--tint); border-top: 2px solid var(--a
   .paper-image { transition: none; }
   .paper-lightbox[open] { animation: none; }
   .contact-button, .contact-button::before, .contact-arrow, .contact-email, .contact-toast { transition: none; }
-  .cohort-nav a, .cohort-nav.is-ready .cohort-indicator { transition: none; }
+  .cohort-nav a, .cohort-nav-label::after { transition: none; }
 }
 
 @media print {

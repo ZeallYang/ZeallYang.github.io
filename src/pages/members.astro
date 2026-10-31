@@ -28,8 +28,8 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
         <p>硕士研究生 <span aria-hidden="true">·</span> {graduateStudents.length} 个年级 <span aria-hidden="true">·</span> {studentCount} 位同学</p>
       </header>
       <nav class="cohort-nav" aria-label="按年级浏览">
-        {graduateStudents.map((cohort, index) => <a href={`#cohort-${cohort.year}`} aria-current={index === 0 ? 'location' : undefined}><span class="cohort-nav-label"><span class="cohort-nav-year">{cohort.year}</span><span class="cohort-nav-suffix">级</span></span></a>)}
-        <span class="cohort-indicator" aria-hidden="true"></span>
+        <span class="cohort-caption">入学年级</span>
+        {graduateStudents.map((cohort, index) => <a href={`#cohort-${cohort.year}`} aria-label={`${cohort.year}级`} aria-current={index === 0 ? 'location' : undefined}><span class="cohort-nav-label"><span class="cohort-nav-year">{cohort.year}</span></span></a>)}
       </nav>
       <div class="cohort-list">
         {graduateStudents.map((cohort) => (
@@ -44,41 +44,14 @@ const studentCount = graduateStudents.reduce((sum, cohort) => sum + cohort.stude
       <footer class="footer"><span>{profile.name} <span aria-hidden="true">/</span> <span lang="en">{profile.englishName}</span></span><a href={asset('')}>返回主页 <span aria-hidden="true">→</span></a></footer>
     </main>
     <script>
-      const page = document.querySelector<HTMLElement>('.members-page')!;
-      const nav = page.querySelector<HTMLElement>('.cohort-nav')!;
-      const indicator = nav.querySelector<HTMLElement>('.cohort-indicator')!;
-      const links = [...nav.querySelectorAll<HTMLAnchorElement>('a')];
-      let active = links[0];
-
-      const moveIndicator = () => {
-        const item = active.getBoundingClientRect();
-        const bounds = nav.getBoundingClientRect();
-        indicator.style.width = `${item.width}px`;
-        indicator.style.height = `${item.height}px`;
-        indicator.style.transform = `translate(${item.left - bounds.left - nav.clientLeft}px, ${item.top - bounds.top - nav.clientTop}px)`;
-      };
-      const select = (link: HTMLAnchorElement) => {
-        active = link;
-        links.forEach((item) => item === link ? item.setAttribute('aria-current', 'location') : item.removeAttribute('aria-current'));
-        moveIndicator();
-      };
+      const links = [...document.querySelectorAll<HTMLAnchorElement>('.cohort-nav a')];
       const followHash = () => {
-        const link = links.find((item) => item.hash === location.hash);
-        select(link || links[0]);
+        const active = links.find((link) => link.hash === location.hash) || links[0];
+        links.forEach((link) => link === active ? link.setAttribute('aria-current', 'location') : link.removeAttribute('aria-current'));
       };
-      nav.addEventListener('click', (event) => {
-        const mouse = event as MouseEvent;
-        if (mouse.ctrlKey || mouse.metaKey || mouse.shiftKey || mouse.altKey) return;
-        const link = (event.target as Element).closest<HTMLAnchorElement>('a');
-        if (!link) return;
-        select(link);
-      });
       window.addEventListener('hashchange', followHash);
       window.addEventListener('pageshow', followHash);
-      const observer = new ResizeObserver(moveIndicator);
-      observer.observe(nav);
       followHash();
-      nav.classList.add('is-ready');
     </script>
   </body>
 </html>
