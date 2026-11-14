@@ -47,7 +47,7 @@ const exchanges = newestFirst(academicExchanges);
               <article class="news-entry-content">
                 <p class="achievement-message">
                   {'competition' in item ? (
-                    <>恭喜 <strong>{item.student}</strong> 同学在 <span class="achievement-venue">{item.competition}</span> 获得 <strong>{item.award}</strong></>
+                    <>恭喜 <strong>{item.student}</strong> 同学在 <span class="achievement-venue">{item.competition}</span> 获得 {item.award}</>
                   ) : (
                     <>恭喜 <strong>{item.student}</strong> 同学在 <span class="achievement-venue" lang="en">{item.venue}</span> 发表论文</>
                   )}
