@@ -244,7 +244,9 @@ export const graduateStudents: GraduateCohort[] = [
   { year: 2021, students: [{ name: '贾瑞柠', note: '中国建设银行股份有限公司武安支行，二级业务员' }] },
 ];
 
-type ResearchAchievement = { date: string; student: string; venue: string; title: string };
+type ResearchAchievement =
+  | { date: string; student: string; venue: string; title: string }
+  | { date: string; student: string; competition: string; award: string };
 type AcademicExchange = {
   date: string;
   students: string[];
@@ -261,6 +263,12 @@ export const researchAchievements: ResearchAchievement[] = [
   { date: '2025-12', student: '茅珑瀛', venue: 'IEEE Sensors Journal', title: 'Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing' },
   { date: '2026-02', student: '高文情', venue: 'IEEE Transactions on Automation Science and Engineering', title: 'Self-Modified Dynamic Domain Adaptation for Industrial Soft Sensing' },
   { date: '2026-08', student: '陈嘉辉', venue: 'Control Engineering Practice', title: 'CLARI: Constrained reflective LLM inference for few-shot soft sensing under operating-condition drift' },
+  {
+    date: '2026-11',
+    student: '王鑫、邵闻起、强锐达',
+    competition: '“华为杯”第二十三届中国研究生数学建模竞赛',
+    award: '国家级三等奖',
+  },
 ];
 
 export const academicExchanges: AcademicExchange[] = [
