@@ -105,6 +105,15 @@ type Publication = {
 
 export const publications: Publication[] = [
   {
+    authors: 'Zeyu Yang, Xin Wang, Bojian Chen, Jiayu Wang, Xiaoyu Jiang',
+    title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency',
+    venue: 'Expert Systems With Applications', venueLabel: 'ESWA', year: 2027,
+    venueNote: '人工智能与专家系统领域国际顶刊，SCI 一区 TOP 期刊',
+    url: 'https://doi.org/10.1016/j.eswa.2026.135095',
+    wechatUrl: 'https://mp.weixin.qq.com/s/Fm0LLJfuGPysUz8FkGQKww',
+    image: { src: 'papers/dcer-2027.webp', thumbnail: 'papers/dcer-2027-thumb.webp', alt: 'DCER 的历史动态知识库构建与动态一致性引导经验检索总体框架', caption: '图 2 · DCER 总体框架', width: 1572, height: 776 },
+  },
+  {
     authors: 'Zeyu Yang, Jiahui Chen, Zhen Bi, Xiaoyu Jiang, Le Yao, Jungang Lou, Zhihuan Song',
     title: 'CLARI: Constrained Reflective LLM Inference for Few-Shot Soft Sensing under Operating-Condition Drift',
     venue: 'Control Engineering Practice', venueLabel: 'CEP', year: 2026,
@@ -258,6 +267,7 @@ type AcademicExchange = {
 
 // 日期统一填写 YYYY-MM；页面自动倒序排列，同月条目保留录入顺序。
 export const researchAchievements: ResearchAchievement[] = [
+  { date: '2026-11', student: '王鑫', venue: 'Expert Systems With Applications', title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency' },
   { date: '2024-09', student: '胡婷婷', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing' },
   { date: '2025-03', student: '茅珑瀛', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors' },
   { date: '2025-12', student: '茅珑瀛', venue: 'IEEE Sensors Journal', title: 'Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing' },
