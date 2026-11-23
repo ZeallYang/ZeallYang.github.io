@@ -108,7 +108,7 @@ export const publications: Publication[] = [
     authors: 'Zeyu Yang, Xin Wang, Bojian Chen, Jiayu Wang, Xiaoyu Jiang',
     title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency',
     venue: 'Expert Systems With Applications', venueLabel: 'ESWA', year: 2027,
-    venueNote: '人工智能与专家系统领域国际顶刊，SCI 一区 TOP 期刊',
+    venueNote: '人工智能与专家系统领域国际顶刊，SCI一区TOP期刊',
     url: 'https://doi.org/10.1016/j.eswa.2026.135095',
     wechatUrl: 'https://mp.weixin.qq.com/s/Fm0LLJfuGPysUz8FkGQKww',
     image: { src: 'papers/dcer-2027.webp', thumbnail: 'papers/dcer-2027-thumb.webp', alt: 'DCER 的历史动态知识库构建与动态一致性引导经验检索总体框架', caption: '图 2 · DCER 总体框架', width: 1572, height: 776 },
