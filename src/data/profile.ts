@@ -107,7 +107,7 @@ export const publications: Publication[] = [
   {
     authors: 'Zeyu Yang, Xin Wang, Bojian Chen, Jiayu Wang, Xiaoyu Jiang',
     title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency',
-    venue: 'Expert Systems With Applications', venueLabel: 'ESWA', year: 2027,
+    venue: 'Expert Systems with Applications', venueLabel: 'ESWA', year: 2027,
     venueNote: '人工智能与专家系统领域国际顶刊，SCI一区TOP期刊',
     url: 'https://doi.org/10.1016/j.eswa.2026.135095',
     wechatUrl: 'https://mp.weixin.qq.com/s/Fm0LLJfuGPysUz8FkGQKww',
@@ -267,7 +267,7 @@ type AcademicExchange = {
 
 // 日期统一填写 YYYY-MM；页面自动倒序排列，同月条目保留录入顺序。
 export const researchAchievements: ResearchAchievement[] = [
-  { date: '2026-11', student: '王鑫', venue: 'Expert Systems With Applications', title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency' },
+  { date: '2026-11', student: '王鑫', venue: 'Expert Systems with Applications', title: 'Dynamic consistency-guided experience retrieval for long-term industrial soft sensing during intermediate verification latency' },
   { date: '2024-09', student: '胡婷婷', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'Stacked Dual-Guided Autoencoder: A Scalable Deep Latent Variable Model for Semi-Supervised Industrial Soft Sensing' },
   { date: '2025-03', student: '茅珑瀛', venue: 'IEEE Transactions on Instrumentation and Measurement', title: 'AKGNN: When Adaptive Graph Neural Network Meets Kolmogorov–Arnold Network for Industrial Soft Sensors' },
   { date: '2025-12', student: '茅珑瀛', venue: 'IEEE Sensors Journal', title: 'Edge-Compressed and Energy-Optimized Dual-Domain Graph Network With Variational Gating for Industrial Soft Sensing' },
